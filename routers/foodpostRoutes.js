@@ -4,6 +4,17 @@ const catchAsyncWrapper = require("../errorUtility/asyncWrapper");
 const mbxgeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const geocoder = mbxgeocoding({accessToken:"pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w"})
 
+var NodeGeocoder = require('node-geocoder');
+ 
+var options = {
+  provider: 'google',
+  httpAdapter: 'https',
+  apiKey: process.env.GEOCODER_API_KEY,
+  formatter: null
+};
+ 
+var geocoder2 = NodeGeocoder(options);
+
 const userAuthenticated = require("../utility/middleware").userAuthenticated;
 const isPostWriter = require("../utility/middleware").isPostWriter;
 const validateFoodpost = require("../utility/middleware").validateFoodpost;

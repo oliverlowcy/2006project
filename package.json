@@ -25,6 +25,7 @@
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
     "navigator": "^1.0.1",
+    "node-geocoder": "^4.2.0",
     "node-navigator": "^1.0.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
