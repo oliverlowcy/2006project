@@ -111,11 +111,12 @@ expressrouter.put("/:id",userAuthenticated,isPostWriter, upload.array('image'), 
         foodPostToEdit.images.push(y)
     }
 
+    let queryLocation = req.body.foodpost.location + " Singapore";
     const geoData = await geocoder.forwardGeocode({
-        query: req.body.foodpost.location,
+        query: queryLocation,
         limit : 1
     }).send()
-    foodPostToEdit.locationInCoordinates = geoData.body.features[0].geometry.coordinates;
+    foodPostToEdit.geometry = geoData.body.features[0].geometry;
 
     if(req.body.deletedImages){
         for(var imageFileNameToDelete of req.body.deletedImages){
@@ -149,16 +150,16 @@ expressrouter.post("/",userAuthenticated,upload.array('image'), validateFoodpost
         listOfImageObjectToAdd.push(imageObjToAdd)
     }
 
-    
+    let queryLocation = req.body.foodpost.location + " Singapore";
     const geoData = await geocoder.forwardGeocode({
-        query: req.body.foodpost.location,
+        query: queryLocation,
         limit : 1
     }).send()
 
     const currentUser = await User.findById(req.user._id)
     const foodpostToSave = req.body.foodpost
     foodpostToSave.writer = currentUser._id;
-    foodpostToSave.locationInCoordinates = geoData.body.features[0].geometry.coordinates;
+    foodpostToSave.geometry = geoData.body.features[0].geometry;
     foodpostToSave.images = listOfImageObjectToAdd;
     const newFoodPost = new Foodpost(foodpostToSave)
     await newFoodPost.save();   

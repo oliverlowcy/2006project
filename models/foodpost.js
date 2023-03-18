@@ -28,11 +28,17 @@ const foodpostSchema = new mongoose.Schema({
             ref: "Review"
         }
     ],
-    locationInCoordinates: [
-        {
-            type: Number
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
         }
-    ],
+    },
     // longitude,latitude
     writer: {
         type: Schema.Types.ObjectId,
@@ -45,8 +51,31 @@ const foodpostSchema = new mongoose.Schema({
     // date: { 
     //     type: Date, default: Date.now 
     // }
-})
+}, {toJSON: {virtuals:true}});
 
+foodpostSchema.virtual('properties.popupText').get(function(){
+    let priceIndicator = ""
+    if(this.price > 20){
+        priceIndicator = `<p><strong>$$$$</strong></p>`
+    }else if(this.price > 15){
+        priceIndicator = `<p><strong>$$$</strong>$</p>`
+    }else if(this.price > 10){
+        priceIndicator = `<p><strong>$$</strong>$$</p>`
+    }else{
+        priceIndicator = `<p><strong>$</strong>$$$</p>`
+    }
+    
+    
+    
+    return `
+    <h3>${this.name}</h3>
+    <p>${this.location}</p>
+    ${priceIndicator}
+    <p><a href="/foodposts/${this._id}">See More</a></p>
+    
+    
+    `
+})
 
 const Foodpost = mongoose.model("Foodpost",foodpostSchema);
 

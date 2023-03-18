@@ -32,7 +32,7 @@ function setupMap(center) {
     map.on("load",  function() {
         console.log("center is " + center)
         directions.setOrigin(center); // can be address in form setOrigin("12, Elm Street, NY")
-        directions.setDestination(destination); // can be address
+        directions.setDestination(destination); // can be address OR COORDINATES
     })
 
 }

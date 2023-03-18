@@ -3,10 +3,12 @@ mapboxgl.accessToken = "pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNub
 navigator.geolocation.getCurrentPosition(successLocation,errorLocation,{enableHighAccuracy:true})
 
 async function successLocation(position){
+    console.log("MINE CENTER IS ", position.coords.longitude , "," , position.coords.latitude)
     let distanceArr = []
     const x = document.getElementsByClassName("post")
     for (let doc of x){
-        console.log(doc.children[3].textContent)
+        // console.log(doc.children[3].textContent)
+        // to know the coordinates of each location in food post
         var apiLink = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"
         apiLink = apiLink + position.coords.longitude + "," + position.coords.latitude + ";" + doc.children[3].textContent + "?&access_token=pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w"
         const response = await fetch(apiLink);

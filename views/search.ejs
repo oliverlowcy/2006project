@@ -22,7 +22,7 @@
                 <a href = "/foodposts/<%= result[i]._id %>"><%= result[i].name %></a>
                 <p>By <%= result[i].writer.username %></p>
                 <p>At <%= result[i].location %></p>
-                <p hidden = true><%= result[i].locationInCoordinates %></p>
+                <p hidden = true><%= result[i].geometry.coordinates %></p>
             </div>
             
 
