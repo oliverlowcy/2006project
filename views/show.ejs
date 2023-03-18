@@ -106,7 +106,8 @@
     </footer>
 
     <script>
-        const destination = "<%= singleFoodPost.location %> Singapore" 
+        const MapBoxToken = "<%- process.env.MY_MAPBOX_API_TOKEN %>"
+        const destination = [<%= singleFoodPost.geometry.coordinates[0] %>,<%= singleFoodPost.geometry.coordinates[1] %>]
     </script>
     <script src="/jsfiles/showMapbox.js"></script>
     

@@ -53,6 +53,7 @@
     
     <script>
         const foodPosts = { features : <%- JSON.stringify(arrOfFoodPost) %>}
+        const MapBoxToken = "<%- process.env.MAPBOX_API_TOKEN %>"
     </script>
 
     <script src="/jsfiles/homeMapbox.js"></script>

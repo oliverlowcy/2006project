@@ -2,8 +2,16 @@ const mongoose = require("mongoose");
 const Malls = require("./malls")
 const Foods = require("./foods")
 const FoodPost = require("../models/foodpost")
-const mbxgeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
-const geocoder = mbxgeocoding({accessToken:"pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w"})
+var NodeGeocoder = require('node-geocoder');
+ 
+var options = {
+  provider: 'google',
+  httpAdapter: 'https',
+  apiKey: "AIzaSyAMgPb1ljtTOxNK2dJ8ymiBKBMkBMf8zas",
+  formatter: null
+};
+ 
+var ggGeocoder = NodeGeocoder(options);
 
 mongoose.set("strictQuery", false);
 mongoose.connect("mongodb://127.0.0.1:27017/2006project",{useNewUrlParser:true,useUnifiedTopology:true})
@@ -17,26 +25,35 @@ mongoose.connect("mongodb://127.0.0.1:27017/2006project",{useNewUrlParser:true,u
 
 async function seedDB(){
     await FoodPost.deleteMany({})
-    let randomNum = 0;
+    let randomNum1 = 0;
+    let randomNum2 = 0;
     let thelocation = " "
     for (let i =0;i<20;i++){
-        randomNum = Math.floor(Math.random() * 20);
-        thelocation = Malls[randomNum];
-
-        const geoData = await geocoder.forwardGeocode({
-            query: thelocation + " Singapore",
-            limit : 1
-        }).send()
-
+        randomNum1 = Math.floor(Math.random() * 20);
+        randomNum2 = Math.floor(Math.random() * 20);
+        thelocation = Malls[randomNum1];
 
         
         const foodpost = new FoodPost({
-            name: Foods[randomNum],
+            name: Foods[randomNum2],
             writer:"63d7874608c5c2c0b0320891",
-            price: randomNum,
+            price: randomNum2,
             location: thelocation,
             rating:2,
-            geometry : geoData.body.features[0].geometry
+        })
+
+        let queryLocation = thelocation + "Singapore";
+        await ggGeocoder.geocode(queryLocation, function (err, data) {
+        
+            //ERROR HANDLING INSERT HERE
+
+            const lat = data[0].latitude;
+            const long = data[0].longitude;
+            foodpost.geometry = {
+                type: "Point",
+                coordinates: [long,lat]
+            }  
+    
         })
 
         await foodpost.save();

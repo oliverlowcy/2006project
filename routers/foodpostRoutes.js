@@ -1,8 +1,6 @@
 const express = require("express");
 const expressrouter = express.Router();
 const catchAsyncWrapper = require("../errorUtility/asyncWrapper");
-const mbxgeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
-const geocoder = mbxgeocoding({accessToken:"pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w"})
 
 var NodeGeocoder = require('node-geocoder');
  
@@ -13,7 +11,7 @@ var options = {
   formatter: null
 };
  
-var geocoder2 = NodeGeocoder(options);
+var ggGeocoder = NodeGeocoder(options);
 
 const userAuthenticated = require("../utility/middleware").userAuthenticated;
 const isPostWriter = require("../utility/middleware").isPostWriter;
@@ -30,6 +28,25 @@ const upload = multer({storage})
 expressrouter.get("/new", userAuthenticated, (req,res) => {
     res.render("newfoodpost")
 })
+
+
+expressrouter.get("/urawesome", async(req,res) => {
+    let location = ""
+    await ggGeocoder.geocode("Nex Singapore", function (err, data) {
+        if (err || !data.length) {
+          req.flash('error', 'Invalid address');
+          return res.redirect('back');
+        }
+        var lat = data[0].latitude;
+        var lng = data[0].longitude;
+        location = data[0].formattedAddress;
+
+    })
+    console.log("location is okay",location)
+    res.send("Okay")
+})
+
+
 
 
 expressrouter.get("/:id/edit", userAuthenticated,isPostWriter, catchAsyncWrapper(async(req,res) => {
@@ -114,20 +131,12 @@ expressrouter.put("/:id",userAuthenticated,isPostWriter, upload.array('image'), 
         listOfImageObjectToAdd.push(imageObjToAdd)
     }
 
- 
-    console.log(req.body)
     const idToEdit = req.params.id;
-    const foodPostToEdit = await Foodpost.findByIdAndUpdate(idToEdit,req.body.foodpost)
+    let foodPostToEdit = await Foodpost.findByIdAndUpdate(idToEdit,req.body.foodpost)
     for(var y of listOfImageObjectToAdd){
         foodPostToEdit.images.push(y)
     }
-
-    let queryLocation = req.body.foodpost.location + " Singapore";
-    const geoData = await geocoder.forwardGeocode({
-        query: queryLocation,
-        limit : 1
-    }).send()
-    foodPostToEdit.geometry = geoData.body.features[0].geometry;
+    
 
     if(req.body.deletedImages){
         for(var imageFileNameToDelete of req.body.deletedImages){
@@ -136,9 +145,29 @@ expressrouter.put("/:id",userAuthenticated,isPostWriter, upload.array('image'), 
         }
     }
 
+    
+    let queryLocation = req.body.foodpost.location + " Singapore";
+    await ggGeocoder.geocode(queryLocation, function (err, data) {
+        
+        //ERROR HANDLING INSERT HERE
+
+        
+        const lat = data[0].latitude;
+        const long = data[0].longitude;
+        foodPostToEdit.geometry = {
+            type: "Point",
+            coordinates: [long,lat]
+        }
+
+        
+        
+
+    })
+
     await foodPostToEdit.save()
     const redirectLink = "/foodposts/" + req.params.id
     res.redirect(redirectLink)
+
 }))
 
 
@@ -161,16 +190,28 @@ expressrouter.post("/",userAuthenticated,upload.array('image'), validateFoodpost
         listOfImageObjectToAdd.push(imageObjToAdd)
     }
 
-    let queryLocation = req.body.foodpost.location + " Singapore";
-    const geoData = await geocoder.forwardGeocode({
-        query: queryLocation,
-        limit : 1
-    }).send()
 
     const currentUser = await User.findById(req.user._id)
     const foodpostToSave = req.body.foodpost
     foodpostToSave.writer = currentUser._id;
-    foodpostToSave.geometry = geoData.body.features[0].geometry;
+
+    let queryLocation = req.body.foodpost.location + " Singapore";
+    await ggGeocoder.geocode(queryLocation, function (err, data) {
+        
+        //ERROR HANDLING INSERT HERE
+
+        
+        const lat = data[0].latitude;
+        const long = data[0].longitude;
+        foodpostToSave.geometry = {
+            type: "Point",
+            coordinates: [long,lat]
+        }
+
+        
+        
+
+    })
     foodpostToSave.images = listOfImageObjectToAdd;
     const newFoodPost = new Foodpost(foodpostToSave)
     await newFoodPost.save();   

@@ -1,5 +1,6 @@
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW0xdGlhMDFpYTNvcDZna2w2dHJodSJ9.2FcaNJU-MTeEpQZgzA9n0A';
+mapboxgl.accessToken = MapBoxToken;
+
 const map = new mapboxgl.Map({
     container: 'map',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
