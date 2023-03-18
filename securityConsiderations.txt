@@ -1,0 +1,2 @@
+1. process.env helps to keep API secure
+2. We have JOI schema to prevent http request from third party apps like Postman
