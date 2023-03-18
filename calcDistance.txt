@@ -1,0 +1,133 @@
+    <script>
+        let longLatArr = [];
+        navigator.geolocation.getCurrentPosition((position) => {
+            const long = position.coords.longitude;
+            const lat = position.coords.latitude;
+            longLatArr = [long,lat];
+
+        })
+
+        async function calcDistanceOfEachDestination(){
+            const destinations = <%- arrOfFoodPost %>
+            const arrOfDestinationCoordinates = []
+            for(var i=0;i<destinations.length;i++){
+                arrOfDestinationCoordinates.push(destinations[i].locationInCoordinates)
+            }
+            console.log(arrOfDestinationCoordinates);
+            // const response = await fetch("https://api.mapbox.com/optimized-trips/v1/mapbox/driving/103.69418,1.33705;103.8563575,1.3115635?&access_token=pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w");
+            // const json = await response.json();
+            // console.log((json.trips[0].legs[0].distance)/1000)
+        }
+        calcDistance();
+        console.log("Okay")
+    </script> 
+
+
+    
+    <% var c = 0; %>
+    <% function fun(){ %>
+        <%     return 2; %>
+        <% } %>
+        <% c = fun() %>
+    <p><%= c %></p>
+
+        <% const x =  arrOfFoodPost %>
+    <p><%= x %></p>
+
+
+
+
+    <% let longLatArr = []; %>
+    <% navigator.geolocation.getCurrentPosition((position) => { %>
+    <%    const long = position.coords.longitude; %>
+    <%    const lat = position.coords.latitude; %>
+    <%    longLatArr = [long,lat]; %>
+    <% }) %>
+    
+
+    <% async function calcDistanceBetweenTwoPoints(coordinate1,coordinate2){ %>
+        <%    const semicolonSeparatedCoordinates = "" + coordinate1[0] + "," + coordinate1[1] + ";" + coordinate2[0] + "," + coordinate2[1] %>
+        <%    const fetchLink = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"+ semicolonSeparatedCoordinates + "?&access_token=pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w" %>
+        <%    const response = await fetch(fetchLink); %>
+        <%    const json = await response.json(); %>
+        <%    if(json.trips[0].legs[0].distance){ %>
+        <%        return (json.trips[0].legs[0].distance)/1000 %>
+        <%    }else{ %>
+        <%        return 99; %>
+        <%    } %>
+
+    <% } %>
+
+    <% async function addDistanceAttribute(longLatArr){ %>
+    <%    for(var i=0;i<arrOfFoodPost.length;i++){ %>
+    <%        arrOfFoodPost[i].distance = await calcDistanceBetweenTwoPoints(arrOfFoodPost[i].locationInCoordinates,longLatArr) %>
+    <%    } %>
+    <% } %>
+
+
+    <% const objectComparisonCallback = (elementA, elementB) => { %>
+    <%   if (elementA.distance < elementB.distance) { %>
+    <%     return -1 %>
+    <%   } %>
+    <%    if (elementA.distance > elementB.distance) { %>
+    <%      return 1 %>
+    <%   } %>
+    <%    return 0 %>
+    <% } %>
+      
+
+
+    <% async function order(){ %>
+    <%    await addDistanceAttribute(); %>
+    <%    arrOfFoodPost.sort(objectComparisonCallback) %>
+    <% } %>
+
+    <% order() %>
+    <p><%= arrOfFoodPost %></p>
+
+my long and lat = 103.853701, 1.3209115
+        <script>
+        navigator.geolocation.getCurrentPosition(async(position) => { 
+            const long = position.coords.longitude; 
+            const lat = position.coords.latitude; 
+            const longLatArr = [long,lat]; 
+            console.log(longLatArr);
+            await order(longLatArr);
+        }) 
+        
+    
+        async function calcDistanceBetweenTwoPoints(coordinate1,coordinate2){ 
+            const semicolonSeparatedCoordinates = "" + coordinate1[0] + "," + coordinate1[1] + ";" + coordinate2[0] + "," + coordinate2[1] 
+            const fetchLink = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"+ semicolonSeparatedCoordinates + "?&access_token=pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w" 
+            const response = await fetch(fetchLink); 
+            const json = await response.json(); 
+            if(json.trips[0].legs[0].distance){ 
+                return (json.trips[0].legs[0].distance)/1000 
+            }else{ 
+                return 99; 
+            } 
+        }
+
+        async function addDistanceAttribute(longLatArr){ 
+            const newArr = <% arrOfFoodPost %>
+            for(var i=0;i<newArr.length;i++){ 
+                newArr.distance = await calcDistanceBetweenTwoPoints(newArr[i].locationInCoordinates,longLatArr) 
+            } 
+        } 
+
+        const objectComparisonCallback = (elementA, elementB) => { 
+            if (elementA.distance < elementB.distance) { 
+                return -1 
+            } 
+            if (elementA.distance > elementB.distance) { 
+                return 1 
+            } 
+            return 0 
+        } 
+
+        async function order(currentLocation){ 
+            await addDistanceAttribute(currentLocation); 
+            arrOfFoodPost.sort(objectComparisonCallback);
+        } 
+
+    </script>

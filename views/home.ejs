@@ -1,0 +1,65 @@
+<%- include('./partials/header')%>
+    <h1>This is the home page where all the food post is displayed</h1>
+
+    
+
+
+   
+
+
+
+
+
+    <% if(isUserAuthenticated){ %>
+        <% if(allFriendRequests.length){ %>
+            <%    for(let friendreq of allFriendRequests){ %>
+                    <p><%= friendreq.requester.username %></p>
+                    <form action="/profile/acceptFriend/<%=friendreq.requester._id %>" method = "POST">
+                        <button type="submit">Accept Friend Request</button>
+                    </form>
+                    <hr>
+            <%    } %>
+        <% }else{ %>
+            <p>No friend requests</p>
+        <%}%>
+
+    
+    <%} %>
+    
+    <% if (isUserAuthenticated && !toShowFriendPosts) { %>
+        <form action="/foodposts" method = "GET">
+            <button type="submit" name = "onlyFriends" value = "yes">Only Friends</button>
+        </form>
+    <% }else if(isUserAuthenticated && toShowFriendPosts){ %>
+        <form action="/foodposts" method = "GET">
+            <button type="submit">Back to FYP</button>
+        </form>
+    <% } %>
+
+
+    <div class = "allposts">
+
+        <% for(var i = 0;i<arrOfFoodPost.length;i++){ %>
+            <div class = "post">
+                <a href = "/foodposts/<%= arrOfFoodPost[i]._id %>"><%= arrOfFoodPost[i].name %></a>
+                <p>By <%= arrOfFoodPost[i].writer.username %></p>
+                <p>At <%= arrOfFoodPost[i].location %></p>
+                <p hidden = true><%= arrOfFoodPost[i].locationInCoordinates %></p>
+            </div>
+            
+
+        <% }%>
+
+    </div>
+    
+    
+
+    <script src="/jsfiles/homeMapbox.js"></script>
+        
+     
+
+    
+
+<%- include('./partials/footer')%>
+
+

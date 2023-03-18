@@ -1,0 +1,31 @@
+<%- include('./partials/header')%>
+
+<p><%= userToFind.username %></p>
+
+
+<% if (friendOption == 1){ %>
+    <% for (let friend of userToFind.friends){%>
+        <strong>Friend list</strong>
+        <p><%= friend.username %></p>
+    <%}%>
+
+<%}else if (friendOption == 2){ %>
+    <form action="/profile/removeFriend/<%= userToFind._id %>?_method=DELETE" method = "POST">
+        <button type="submit">Remove Friend</button>
+    </form>
+<% }else if(friendOption == 3){ %>
+    <p>Friend request pending!</p>
+<% }else if(friendOption == 4){ %>
+    <form action="/profile/acceptFriend/<%= userToFind._id %>" method = "POST">
+        <button type="submit">Accept Friend Request</button>
+    </form>
+<% } else if(friendOption == 5){ %>
+    <form action="/profile/addFriend/<%= userToFind._id %>" method = "POST">
+        <button type="submit">Add Friend</button>
+    </form>
+<% } %>
+
+
+
+
+<%- include('./partials/footer')%>

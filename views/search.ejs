@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="/jsfiles/liveSearch.js"></script>
+
+    <h1>Search</h1>
+    
+    <form action="/foodposts/search" method = "GET" name = "searchBar">
+        <input type="text" name="search" placeholder="food search">
+        <input type="submit" value="submit">
+
+    </form>
+    
+    <% if(match){ %>
+        <% for(var i = 0;i<result.length;i++){ %>
+            <div class = "post">
+                <a href = "/foodposts/<%= result[i]._id %>"><%= result[i].name %></a>
+                <p>By <%= result[i].writer.username %></p>
+                <p>At <%= result[i].location %></p>
+                <p hidden = true><%= result[i].locationInCoordinates %></p>
+            </div>
+            
+
+        <% }%>
+    <% } %>
+
+
+
+
+</body>
+</html>

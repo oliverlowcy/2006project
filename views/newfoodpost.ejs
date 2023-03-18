@@ -1,0 +1,49 @@
+<%- include('./partials/header')%>
+<div class = "container">
+<form action= "/foodposts" method = "POST" class="validated-form" novalidate enctype="multipart/form-data">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name = "foodpost[name]" placeholder="First name" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" name = "foodpost[price]" placeholder="Price" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location" name = "foodpost[location]" placeholder="Location" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+        <input type="file" name="image" id="" multiple>
+        <label for="rating">Choose a Rating:</label>
+        <select id="rating" name="foodpost[rating]">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">5</option>
+          <option value="5">5</option>
+        </select>
+    </div>  
+
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </form>
+  
+
+    </div>
+</div>
+
+
+  
+<%- include('./partials/footer')%>

@@ -1,0 +1,70 @@
+
+// ================================
+
+// To push into each other's friend list
+
+
+// const currentUser = await User.findById(req.user._id)
+    // const userToFind = await User.findById(req.params.id)
+    // currentUser.friends.push(userToFind._id)
+    // userToFind.friends.push(currentUser._id)
+    // await currentUser.save()
+    // await userToFind.save()
+
+    // const currentUser = await User.findById(req.user._id)
+    // for( let friend of currentUser.friends){
+
+    //     if(friend.toHexString()){
+    //         if (friend.toHexString() === req.params.id){
+    //             return res.send("okay lah")
+    //         }
+    //     }
+    // }
+
+
+
+    // ================================
+
+// To create friendship object
+
+    // const newFriendship = {}
+    // newFriendship.requestee = currentUser._id;
+    // newFriendship.requester = req.params.id;
+    // newFriendship.resolvedStatus = false;
+    // const myfriendship = new Friendship(newFriendship)
+    // await myfriendship.save();  
+
+
+
+// ================================
+
+// To determine the state of the friendship
+
+    // const currentUserRequested = await Friendship.find({"requestee":currentUser._id,"requester":userToFind._id,"resolvedStatus":false})
+    // const currentUserHasBeenRequested = await Friendship.find({"requester":currentUser._id,"requestee":userToFind._id,"resolvedStatus":false})
+    // const alreadyFriendsAndWasRequestedByCurrentUser = await Friendship.find({"requestee":currentUser._id,"requester":userToFind._id,"resolvedStatus":true})
+    // const alreadyFriendsAndWasRequestedByUserToFind = await Friendship.find({"requester":currentUser._id,"requestee":userToFind._id,"resolvedStatus":true})
+
+
+    // if(currentUser._id.toHexString() == userToFind._id.toHexString()){
+    //     // means is my own profile
+    //     console.log(1);
+
+    // }else if(alreadyFriendsAndWasRequestedByCurrentUser.length || alreadyFriendsAndWasRequestedByUserToFind.length){
+    //     // means they are already friends
+    //     console.log(2);
+
+    // }else if(currentUserRequested.length){
+    //     // means current user sent the friend request
+    //     console.log(3);
+
+    // }else if(currentUserHasBeenRequested.length){
+    //     // means current user WAS SENT the friend request
+    //     console.log(4);
+
+    // }
+
+    // console.log(currentUserRequested);
+    // console.log(alreadyFriendsAndWasRequestedByCurrentUser);
+    // console.log(alreadyFriendsAndWasRequestedByUserToFind);
+    // console.log(currentUserHasBeenRequested);

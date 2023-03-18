@@ -1,0 +1,54 @@
+
+    let sortedPositions = arrInPlace(distanceArr)
+
+    // const wrapper = document.querySelector('.allposts');
+    // const abcElements = document.querySelectorAll('.post');
+    
+    
+    // // create a new array of elements with the correct order
+    // const sortedElements = sortedPositions.map(i => abcElements[i]);
+    
+    // // append the sorted elements to the wrapper element in their new order
+    // sortedElements.forEach(el => wrapper.appendChild(el));
+
+    // var allposts = document.getElementsByClassName("allposts");
+    // var items = allposts[0].children;
+    // var elements = document.createDocumentFragment();
+    console.log(sortedPositions)
+
+    // sortedPositions.forEach(function(idx) {
+    // 	elements.appendChild(items[idx].cloneNode(true));
+    // });
+    
+    // allposts[0].innerHTML = null;
+    // allposts[0].appendChild(elements);
+
+    const wrapper = document.querySelector('.allposts');
+    const abcElements = document.querySelectorAll('.post');
+    const indexes = sortedPositions;
+
+    // create a new array of elements with the correct order
+    const sortedElements = indexes.map(i => abcElements[i]);
+
+    // append the sorted elements to the wrapper element in their new order
+    sortedElements.forEach(el => wrapper.appendChild(el));
+
+
+
+
+
+
+
+
+function arrInPlace(arrOfDistance) {
+    // sort the array in ascending order
+    const sortedArr = arrOfDistance.slice().sort((a, b) => a - b);
+  
+    // create a Map object to map each element in the sorted array to its position
+    const positions = new Map(sortedArr.map((num, index) => [num, index]));
+  
+    // create a new array with the positions of the elements in the original array
+    const result = arrOfDistance.map(num => positions.get(num));
+  
+    return result;
+  }
