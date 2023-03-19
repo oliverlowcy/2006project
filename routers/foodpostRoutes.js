@@ -30,22 +30,6 @@ expressrouter.get("/new", userAuthenticated, (req,res) => {
 })
 
 
-expressrouter.get("/urawesome", async(req,res) => {
-    let location = ""
-    await ggGeocoder.geocode("Nex Singapore", function (err, data) {
-        if (err || !data.length) {
-          req.flash('error', 'Invalid address');
-          return res.redirect('back');
-        }
-        var lat = data[0].latitude;
-        var lng = data[0].longitude;
-        location = data[0].formattedAddress;
-
-    })
-    console.log("location is okay",location)
-    res.send("Okay")
-})
-
 
 
 

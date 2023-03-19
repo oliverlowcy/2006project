@@ -9,17 +9,24 @@ async function successLocation(position){
     for (let doc of x){
         // console.log(doc.children[3].textContent)
         // to know the coordinates of each location in food post
-        var apiLink = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"
-        apiLink = apiLink + position.coords.longitude + "," + position.coords.latitude + ";" + doc.children[3].textContent + "?&access_token=pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w"
-        const response = await fetch(apiLink);
-        const json = await response.json();
-        const distanceTo = (json.trips[0].legs[0].distance)/1000
+
+        // console.log(doc.children[3].textContent.split(","))
+
+        // var apiLink = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/"
+        // apiLink = apiLink + position.coords.longitude + "," + position.coords.latitude + ";" + doc.children[3].textContent + "?&access_token=pk.eyJ1Ijoib2xpdmVybG93MTMiLCJhIjoiY2xkOW00cXdiMDhydjNubnpteDRkejlpcSJ9.OpFQISdTL5ZV4WFR6a6M6w"
+        // const response = await fetch(apiLink);
+        // const json = await response.json();
+        // const distanceTo = (json.trips[0].legs[0].distance)/1000
+
+        const dist = await getDistance(position.coords.longitude,position.coords.latitude,doc.children[3].textContent.split(",")[0],doc.children[3].textContent.split(",")[1])
+
+
 
         const node = document.createElement("p");
-        const textnode = document.createTextNode("Estimated distance is " + Math.round(distanceTo * 10) / 10 + " km");
+        const textnode = document.createTextNode("Estimated distance is " + dist + " km");
         node.appendChild(textnode);
         doc.appendChild(node);
-        distanceArr.push((json.trips[0].legs[0].distance)/1000)
+        distanceArr.push(dist)
 
 
 
@@ -34,7 +41,14 @@ async function successLocation(position){
 
 
 function errorLocation(){
-    
 
 }
 
+async function getDistance(sourceLong,sourceLat,destLong,destLat){
+    let apiLink = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/";
+    apiLink = apiLink + sourceLong + "," + sourceLat + ";" + destLong + "," + destLat + "?&access_token=" + MapBoxToken;
+    const response = await fetch(apiLink);
+    const json = await response.json();
+    const distanceTo = (json.trips[0].legs[0].distance)/1000
+    return Math.round(distanceTo * 10) / 10
+}

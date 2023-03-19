@@ -4,9 +4,14 @@
 
 
 <% if (friendOption == 1){ %>
-    <% for (let friend of userToFind.friends){%>
-        <strong>Friend list</strong>
-        <p><%= friend.username %></p>
+    
+    <strong>Pending Friend Request</strong>
+    <br>
+    <% for (let friendReq of allFriendRequests){%>
+        <p><%= friendReq.requester.username %></p>
+        <form action="/profile/acceptFriend/<%=friendReq.requester._id %>" method = "POST">
+            <button type="submit">Accept Friend Request</button>
+        </form>
     <%}%>
 
 <%}else if (friendOption == 2){ %>
@@ -15,6 +20,7 @@
     </form>
 <% }else if(friendOption == 3){ %>
     <p>Friend request pending!</p>
+
 <% }else if(friendOption == 4){ %>
     <form action="/profile/acceptFriend/<%= userToFind._id %>" method = "POST">
         <button type="submit">Accept Friend Request</button>
@@ -24,6 +30,21 @@
         <button type="submit">Add Friend</button>
     </form>
 <% } %>
+
+<br>
+<strong>Friend list</strong>
+<% for (let friend of userToFind.friends){%>
+    <a href="/profile/<%= friend._id %>"><p><%= friend.username %></p></a>
+<%}%>
+
+
+<br>
+<br>
+<% for (let foodpost of foodPostsByUser){%>
+    <a href = "/foodposts/<%= foodpost._id %>"><%= foodpost.name %></a>
+    <p>At <%= foodpost.location %></p>
+<%}%>
+
 
 
 

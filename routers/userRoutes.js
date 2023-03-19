@@ -4,6 +4,7 @@ const passport = require("passport");
 const catchAsyncWrapper = require("../errorUtility/asyncWrapper");
 const User = require("../models/user");
 const Friendship = require("../models/friendship");
+const FoodPost = require("../models/foodpost");
 const { userAuthenticated } = require("../utility/middleware");
 
 
@@ -144,6 +145,11 @@ expressrouter.get("/:id", userAuthenticated, async(req, res) => {
     const alreadyFriendsAndWasRequestedByCurrentUser = await Friendship.find({"requester":currentUser._id,"requestee":userToFind._id,"resolvedStatus":true})
     const alreadyFriendsAndWasRequestedByUserToFind = await Friendship.find({"requestee":currentUser._id,"requester":userToFind._id,"resolvedStatus":true})
 
+    let allFriendRequests = []
+    allFriendRequests = await Friendship.find({"requestee":userToFind._id, resolvedStatus: false}).populate("requester")
+
+
+
     let friendOption = -1;
     if(currentUser._id.toHexString() == userToFind._id.toHexString()){
         // means is my own profile
@@ -166,7 +172,12 @@ expressrouter.get("/:id", userAuthenticated, async(req, res) => {
         friendOption = 5;
     }
 
-    res.render("profilePage",{userToFind:userToFind , friendOption:friendOption})
+    const foodPostsByUser = await FoodPost.find({"writer": userToFind._id}).populate("writer");
+
+
+
+
+    res.render("profilePage",{userToFind:userToFind , friendOption:friendOption,allFriendRequests:allFriendRequests,foodPostsByUser:foodPostsByUser})
  
 })
 

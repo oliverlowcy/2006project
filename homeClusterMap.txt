@@ -1,18 +1,6 @@
 mapboxgl.accessToken = MapBoxToken;
-navigator.geolocation.getCurrentPosition(successLocation,errorLocation,{enableHighAccuracy:true})
 
-function successLocation(position){
-    
-    initialiseMap(position.coords.longitude,position.coords.latitude)
-}
-
-function errorLocation(){
-
-}
-
-
-
-function initialiseMap(centreLong,centreLat){
+function initialiseMap(){
 
     const now = new Date();
     const currentHour = now.getHours();
@@ -29,19 +17,13 @@ function initialiseMap(centreLong,centreLat){
         mapStyle = "mapbox://styles/mapbox/" + lightOrDark + "-v11"
     }
 
-    const mycentre = [centreLong,centreLat];
-
     const map = new mapboxgl.Map({
         container: 'map',
         // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         style: mapStyle,
-        center: mycentre,
-        zoom: 11
+        center: [103.8536578 , 1.3208954],
+        zoom: 10
     });
-
-    const centerMarker = new mapboxgl.Marker()
-        .setLngLat(mycentre)
-        .addTo(map);
     
     map.on('load', () => {
         // Add a new source from our GeoJSON data and
@@ -161,4 +143,9 @@ function initialiseMap(centreLong,centreLat){
         });
     });
 }
+
+initialiseMap()
+
+
+
 

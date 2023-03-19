@@ -12,7 +12,7 @@
     <% if(isUserAuthenticated){ %>
         <% if(allFriendRequests.length){ %>
             <%    for(let friendreq of allFriendRequests){ %>
-                    <p><%= friendreq.requester.username %></p>
+                    <a href="/profile/<%=friendreq.requester._id %>"><p><%= friendreq.requester.username %></p></a>
                     <form action="/profile/acceptFriend/<%=friendreq.requester._id %>" method = "POST">
                         <button type="submit">Accept Friend Request</button>
                     </form>
