@@ -10,17 +10,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
-    <style>
-    
-    #map { top: 0; bottom: 0; height: 700px;width:700px;margin-left: 20px;margin-top: 50px;border-style:outset;}
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/cssfiles/header.css">
     
  
 </head>
-<body>
+<body class = "d-flex flex-column vh-100">
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css" type="text/css">
-
+    
 
         
     <% if(error && error.length) {%>
@@ -32,28 +32,28 @@
         </div>
     <% } %>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/foodposts">Eatstagram</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="/foodposts">All Foodposts</a>
-                    <a class="nav-link" href="/foodposts/new">New Foodposts</a>
-                </div>
-            </div>
-            <div class="navbar-nav ml-auto">
-                <% if(!currentUser) {%>
-                <a class="nav-link" href="/profile/login">Login</a>
-                <a class="nav-link" href="/profile/register">Register</a>
 
+    <div class = "myNavbar">
+        <nav>
+            <h2><a href="/" class = "logo">EATSTAGRAM</a></h2>
+            <ul>
+                <li><a href="/foodposts">All Foodposts</a></li>
+                <li><a href="/foodposts/new">New Foodpost</a></li>
+                <% if(!currentUser) {%>
+                    <li><a href="/profile/register">Register</a></li>
                 <% } else {%>
-                    <a class="nav-link" href="/profile/<%= currentUser._id %>">Profile</a>
-                    <a class="nav-link" href="/profile/logout">Logout</a>
+                    <li><a href="/profile/<%= currentUser._id %>">Profile</a></li>
                 <% } %>
-            </div>
-        </div>
-    </nav>
+            </ul>
+            <% if(!currentUser){ %>
+                <a href = "/profile/login" class="btn btn-info mybutton" >Login</a>
+            <%} else {%>
+                <a href = "/profile/logout" class="btn btn-info mybutton" >Logout</a>
+            <% } %>
+        </nav>
+    </div>
+
+
+
+
+

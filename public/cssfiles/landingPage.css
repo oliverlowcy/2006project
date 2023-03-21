@@ -1,0 +1,25 @@
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("/photos/prettyGirlEating.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.welcome{
+    margin-top: 150px;
+    text-align: center;
+    color: white;
+}
+
+.mybutton1{
+
+    border:none;
+    background: #40E0D0;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color:Black;
+    transition: 0.4s;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+

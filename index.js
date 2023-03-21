@@ -69,6 +69,7 @@ app.set("views",path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 
+
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;  //currentUser will be undefined if not authenticated
     res.locals.error = req.flash("error");
@@ -76,13 +77,12 @@ app.use((req, res, next) => {
 })
 
 
-
 app.use("/profile", userRoutes);
 app.use("/foodposts", foodpostRoutes)
 app.use("/foodposts/:id/reviews", reviewRoutes)
 
-app.get("/search", async(req,res) => {
-    res.render("search")
+app.get("/", async(req,res) => {
+    res.render("landingPage")
 })
 
 

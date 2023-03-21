@@ -1,0 +1,65 @@
+
+body
+{
+    height:100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: green;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.logo{
+    color:white;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.logo:hover{
+    color:grey;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding:10px 20px
+}
+
+
+nav ul li a{
+    color:white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+nav ul li a:hover{
+    color:grey;
+    transition: .3s;
+    font-size: 17px;
+}
+
+.mybutton{
+    border:none;
+    background: green;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color:white;
+    transition: 0.4s;
+    font-weight: bold;
+}
+
+.mybutton:hover{
+    transform: scale(1.2);
+    background: black;
+}
+

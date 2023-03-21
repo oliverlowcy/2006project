@@ -73,7 +73,7 @@ expressrouter.get("/", catchAsyncWrapper(async(req,res) => {
 
 }))
 
-expressrouter.get("/search" , async(req,res) => {
+expressrouter.get("/search" , catchAsyncWrapper(async(req,res) => {
     let result = []
     let match = false;
 
@@ -93,7 +93,7 @@ expressrouter.get("/search" , async(req,res) => {
 
     
     
-})
+}))
 
 
 
