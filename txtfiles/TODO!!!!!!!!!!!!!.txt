@@ -7,3 +7,11 @@
     </div>
     // <script src="/jsfiles/homeMapbox.js"></script>
     // <script src="/jsfiles/homeClusterMap.js"></script>
+
+=================================================================================
+    //map.addControl(directions,"top-left");
+
+    //map.on("load",  function() {
+        directions.setOrigin(center); // can be address in form setOrigin("12, Elm Street, NY")
+        directions.setDestination(destination); // can be address OR COORDINATES
+    })
