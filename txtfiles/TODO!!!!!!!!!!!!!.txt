@@ -1,5 +1,9 @@
 1. Refactor error.ejs
 2. Refactor carousel for show page
 
+
+    <div class = "container">
+        <div id = "map" style = "width:100% ; height:500px"></div>
+    </div>
     // <script src="/jsfiles/homeMapbox.js"></script>
     // <script src="/jsfiles/homeClusterMap.js"></script>
