@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Review = require("./review")
 const Schema = mongoose.Schema;
 
+
 const foodpostSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -76,6 +77,7 @@ foodpostSchema.virtual('properties.popupText').get(function(){
     
     `
 })
+
 
 const Foodpost = mongoose.model("Foodpost",foodpostSchema);
 

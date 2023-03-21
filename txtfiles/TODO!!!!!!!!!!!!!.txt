@@ -5,8 +5,8 @@
     <div class = "container">
         <div id = "map" style = "width:100% ; height:500px"></div>
     </div>
-    // <script src="/jsfiles/homeMapbox.js"></script>
-    // <script src="/jsfiles/homeClusterMap.js"></script>
+    <script src="/jsfiles/homeMapbox.js"></script>
+    <script src="/jsfiles/homeClusterMap.js"></script>
 
 =================================================================================
     <script>
@@ -14,3 +14,28 @@
         const destination = [<%= singleFoodPost.geometry.coordinates[0] %>,<%= singleFoodPost.geometry.coordinates[1] %>]
     </script>
     <script src="/jsfiles/showMapbox.js"></script>
+
+=================================================================================
+
+    <script>
+        function initMap() {
+            var center = {lat: 1.2837575, lng: 103.8591065 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: center,
+                scrollwheel: false
+            });
+            var contentString = "TEST"
+            var infowindow = new google.maps.InfoWindow({
+            content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: center,
+                map: map
+            });
+            marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4tsvyW5YoRzRsQgpT-gdg9OIxRpSA4JA&callback=initMap"></script>

@@ -1,7 +1,9 @@
 <%- include('./partials/header')%>
 
 
-    
+    <div class = "container">
+        <div id = "map" style = "width:100% ; height:500px"></div>
+    </div>
 
     <h1>This is the home page where all the food post is displayed</h1>
 
@@ -54,6 +56,8 @@
         const MapBoxToken = "<%- process.env.MAPBOX_API_TOKEN %>"
     </script>
 
+    <script src="/jsfiles/homeMapbox.js"></script>
+    <script src="/jsfiles/homeClusterMap.js"></script>
 
         
      
