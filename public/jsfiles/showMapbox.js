@@ -42,6 +42,11 @@ function setupMap(center,lightOrDark) {
         accessToken: mapboxgl.accessToken
     });
 
+    map.addControl(directions,"top-left");
 
+    map.on("load",  function() {
+        directions.setOrigin(center); // can be address in form setOrigin("12, Elm Street, NY")
+        directions.setDestination(destination); // can be address OR COORDINATES
+    })
 
 }

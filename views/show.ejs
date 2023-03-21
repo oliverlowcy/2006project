@@ -94,12 +94,30 @@
     <% } %>
 
     
+    
+    <!-- ======================================================================================================================================== -->
     <script>
-        const MapBoxToken = "<%- process.env.MAPBOX_API_TOKEN %>"
-        const destination = [<%= singleFoodPost.geometry.coordinates[0] %>,<%= singleFoodPost.geometry.coordinates[1] %>]
+        function initMap() {
+            var center = {lat: 1.2837575, lng: 103.8591065 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: center,
+                scrollwheel: false
+            });
+            var contentString = "TEST"
+            var infowindow = new google.maps.InfoWindow({
+            content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: center,
+                map: map
+            });
+            marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            });
+        }
     </script>
-    <script src="/jsfiles/showMapbox.js"></script>
-
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4tsvyW5YoRzRsQgpT-gdg9OIxRpSA4JA&callback=initMap"></script>
+    <!-- ======================================================================================================================================== -->
 
 <%- include('./partials/footer')%>
