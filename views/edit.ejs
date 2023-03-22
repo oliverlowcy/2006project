@@ -1,109 +1,112 @@
 <%- include('./partials/header')%>
-<div class = "container">
-<form action="/foodposts/<%= singleFoodPost._id %>?_method=PUT" method = "POST" class="validated-form" novalidate enctype="multipart/form-data">
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name = "foodpost[name]" placeholder="First name" value = "<%= singleFoodPost.name%>" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="price">Price</label>
-        <input type="text" class="form-control" id="price" name = "foodpost[price]" placeholder="Price" value = "<%= singleFoodPost.price%>" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="location">Location</label>
-            <input type="text" class="form-control" id="location" name = "foodpost[location]" placeholder="Location" value = "<%= singleFoodPost.location%>"required>
+<body>
+  <%- include('./partials/flasher')%>
+  <%- include('./partials/navbar')%>
+  <div class = "container">
+    <form action="/foodposts/<%= singleFoodPost._id %>?_method=PUT" method = "POST" class="validated-form" novalidate enctype="multipart/form-data">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name = "foodpost[name]" placeholder="First name" value = "<%= singleFoodPost.name%>" required>
             <div class="valid-feedback">
               Looks good!
             </div>
-        </div>
-        <input type="file" name="image" id="" multiple>
-        <label for="rating">Choose a Rating:</label>
-        <select id="rating" name="foodpost[rating]">
-          <% if (rating == 0){%>
-            <option value="0" selected>0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          <% }else if (rating ==1){%>
-            <option value="0">0</option>
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          <% }else if (rating ==2){%>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <% }else if (rating ==3){%>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3" selected>3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            <% }else if (rating ==4){%>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4" selected>4</option>
-              <option value="5">4</option>
-            <% }else if (rating ==5){%>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5" selected>4</option>
-            <% } %>
-        </select>
-    </div>  
-    
-    <style>
-      img{
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" name = "foodpost[price]" placeholder="Price" value = "<%= singleFoodPost.price%>" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" name = "foodpost[location]" placeholder="Location" value = "<%= singleFoodPost.location%>"required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+            </div>
+            <input type="file" name="image" id="" multiple>
+            <label for="rating">Choose a Rating:</label>
+            <select id="rating" name="foodpost[rating]">
+              <% if (rating == 0){%>
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              <% }else if (rating ==1){%>
+                <option value="0">0</option>
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              <% }else if (rating ==2){%>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <% }else if (rating ==3){%>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3" selected>3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                <% }else if (rating ==4){%>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                  <option value="5">4</option>
+                <% }else if (rating ==5){%>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5" selected>4</option>
+                <% } %>
+            </select>
+        </div>  
         
-        display:block;
-      }
-    </style>
-    <% for (var x = 0;x<singleFoodPost.images.length;x++){ %>
-      <%var y = singleFoodPost.images[x].url .split("upload/")%>
-      <% var redirectLink = y[0] + "upload/w_400/" + y[1] %>
-
-
-        <img src="<%= redirectLink %>" alt="">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name = "deletedImages[]" value="<%= singleFoodPost.images[x].fileName %>" id="flexCheck-<%= x %>">
-          <label class="form-check-label" for="flexCheck-<%= x %>">
-            Delete?
-          </label>
+        <style>
+          img{
+            
+            display:block;
+          }
+        </style>
+        <% for (var x = 0;x<singleFoodPost.images.length;x++){ %>
+          <%var y = singleFoodPost.images[x].url .split("upload/")%>
+          <% var redirectLink = y[0] + "upload/w_400/" + y[1] %>
+    
+    
+            <img src="<%= redirectLink %>" alt="">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name = "deletedImages[]" value="<%= singleFoodPost.images[x].fileName %>" id="flexCheck-<%= x %>">
+              <label class="form-check-label" for="flexCheck-<%= x %>">
+                Delete?
+              </label>
+            </div>
+        <% } %>
+    
+    
+    
+    
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+      
+    
         </div>
-    <% } %>
-
-
-
-
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </form>
-  
-
     </div>
-</div>
-
-
-  
-<%- include('./partials/footer')%>
+    
+    
+      
+    <%- include('./partials/footer')%>

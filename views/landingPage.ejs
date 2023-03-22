@@ -1,21 +1,30 @@
 <%- include('./partials/header')%>
-
-<link rel="stylesheet" href="/cssfiles/landingPage.css">
-
-
-<div class = "container welcome">
-    <h1><strong>WELCOME OLIVER</strong></h1>
-    <br>
-    <h2>What would you like to do?</h2>
-    <br>
-    <br>
-    <a href = "/foodposts" class="btn btn-info mybutton1" >View For You Page</a>
-    <a href = "/foodposts/search" class="btn btn-info mybutton1" >Search</a>
-
-</div>
+<body class = "d-flex flex-column vh-100">
+    <%- include('./partials/flasher')%>
+    <%- include('./partials/navbar')%>
+    <link rel="stylesheet" href="/cssfiles/landingPage.css">
 
 
+    <div class = "container welcome">
+        <h1><strong>WELCOME OLIVER</strong></h1>
+        <br>
+        <h2>What would you like to do?</h2>
+        <br>
+        <br>
+        <br>
+        <br>
+ 
+        <a href = "/foodposts" class="btn btn-info mybutton1" ><i class='bx bx-list-ul'></i>   View For You Page</a>
+        <a href = "/foodposts/search" class="btn btn-info mybutton1" ><i class='bx bx-search'></i>   Search </a>
+    
+    </div>
+    
+    
+    
+    
+    <%- include('./partials/bsValidation')%>
+
+</body>
+</html>
 
 
-
-<%- include('./partials/footer')%>

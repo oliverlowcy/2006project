@@ -1,52 +1,55 @@
 <%- include('./partials/header')%>
+<body class = "d-flex flex-column vh-100">
+    <%- include('./partials/flasher')%>
+    <%- include('./partials/navbar')%>
+    <p><%= userToFind.username %></p>
 
-<p><%= userToFind.username %></p>
 
-
-<% if (friendOption == 1){ %>
+    <% if (friendOption == 1){ %>
+        
+        <strong>Pending Friend Request</strong>
+        <br>
+        <% for (let friendReq of allFriendRequests){%>
+            <p><%= friendReq.requester.username %></p>
+            <form action="/profile/acceptFriend/<%=friendReq.requester._id %>" method = "POST">
+                <button type="submit">Accept Friend Request</button>
+            </form>
+        <%}%>
     
-    <strong>Pending Friend Request</strong>
-    <br>
-    <% for (let friendReq of allFriendRequests){%>
-        <p><%= friendReq.requester.username %></p>
-        <form action="/profile/acceptFriend/<%=friendReq.requester._id %>" method = "POST">
+    <%}else if (friendOption == 2){ %>
+        <form action="/profile/removeFriend/<%= userToFind._id %>?_method=DELETE" method = "POST">
+            <button type="submit">Remove Friend</button>
+        </form>
+    <% }else if(friendOption == 3){ %>
+        <p>Friend request pending!</p>
+    
+    <% }else if(friendOption == 4){ %>
+        <form action="/profile/acceptFriend/<%= userToFind._id %>" method = "POST">
             <button type="submit">Accept Friend Request</button>
         </form>
+    <% } else if(friendOption == 5){ %>
+        <form action="/profile/addFriend/<%= userToFind._id %>" method = "POST">
+            <button type="submit">Add Friend</button>
+        </form>
+    <% } %>
+    
+    <br>
+    <strong>Friend list</strong>
+    <% for (let friend of userToFind.friends){%>
+        <a href="/profile/<%= friend._id %>"><p><%= friend.username %></p></a>
     <%}%>
-
-<%}else if (friendOption == 2){ %>
-    <form action="/profile/removeFriend/<%= userToFind._id %>?_method=DELETE" method = "POST">
-        <button type="submit">Remove Friend</button>
-    </form>
-<% }else if(friendOption == 3){ %>
-    <p>Friend request pending!</p>
-
-<% }else if(friendOption == 4){ %>
-    <form action="/profile/acceptFriend/<%= userToFind._id %>" method = "POST">
-        <button type="submit">Accept Friend Request</button>
-    </form>
-<% } else if(friendOption == 5){ %>
-    <form action="/profile/addFriend/<%= userToFind._id %>" method = "POST">
-        <button type="submit">Add Friend</button>
-    </form>
-<% } %>
-
-<br>
-<strong>Friend list</strong>
-<% for (let friend of userToFind.friends){%>
-    <a href="/profile/<%= friend._id %>"><p><%= friend.username %></p></a>
-<%}%>
-
-
-<br>
-<br>
-<% for (let foodpost of foodPostsByUser){%>
-    <a href = "/foodposts/<%= foodpost._id %>"><%= foodpost.name %></a>
-    <p>At <%= foodpost.location %></p>
-<%}%>
-
-
-
-
-
-<%- include('./partials/footer')%>
+    
+    
+    <br>
+    <br>
+    <% for (let foodpost of foodPostsByUser){%>
+        <a href = "/foodposts/<%= foodpost._id %>"><%= foodpost.name %></a>
+        <p>At <%= foodpost.location %></p>
+    <%}%>
+    
+    
+    
+    
+    
+    <%- include('./partials/footer')%>
+    

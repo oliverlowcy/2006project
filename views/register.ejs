@@ -1,29 +1,46 @@
 <%- include('./partials/header')%>
+<body>
+    <%- include('./partials/flasher')%>
+    <%- include('./partials/navbar')%>
+    <link rel="stylesheet" href="/cssfiles/login.css">
 
-<h1>Register</h1>
-<form action="/profile/register" method="POST" class="validated-form" novalidate>
-    <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="email">Email</label>
-        <input class="form-control" type="email" id="email" name="email" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-    <button class="btn btn-success">Register</button>
-</form>
+    <div class="box2">
+        <div class="container1">
+            <form action="/profile/register" method="POST" class="validated-form">
+                <div class="top">
+                    <header><strong>Register</strong></header>
+                </div>
+        
+                <div class="input-field">
+                    <input type="email" class="input" placeholder="Email" name="email" required>
+                    <i class='bx bx-envelope bx-burst'></i>
+                </div>
 
-<%- include('./partials/footer')%>
+                <div class="input-field">
+                    <input type="text" class="input" placeholder="Username" name = "username" required>
+                    <i class='bx bx-user bx-burst' ></i>
+                </div>
+        
+                <div class="input-field">
+                    <input type="Password" class="input" placeholder="Password" name="password" required>
+                    <i class='bx bx-lock-alt bx-burst'></i>
+                </div>
+
+                
+        
+                <div class="input-field">
+                    <input type="submit" class="submit" value="Register" id="firstButton">
+                </div>
+            </form>
+            <form action="/profile/login" method = "GET">
+                <div class="input-field">
+                    <input type="submit" class="submit" value="Have An Account? Login" id="secondButton">
+                </div>
+            </form>
+        </div>
+    </div>  
+    <%- include('./partials/bsValidation')%>
+
+</body>
+</html>
+    
