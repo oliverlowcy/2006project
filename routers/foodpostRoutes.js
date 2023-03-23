@@ -136,11 +136,21 @@ expressrouter.put("/:id",userAuthenticated,isPostWriter, upload.array('image'), 
         //ERROR HANDLING INSERT HERE
 
         
-        const lat = data[0].latitude;
-        const long = data[0].longitude;
-        foodPostToEdit.geometry = {
-            type: "Point",
-            coordinates: [long,lat]
+        let lat = 1.3342641;
+        let long = 103.8490489;
+
+        if(!(err || !data.length)){
+            lat = data[0].latitude;
+            long = data[0].longitude;
+            foodPostToEdit.geometry = {
+                type: "Point",
+                coordinates: [long,lat]
+            }  
+        }else{
+            foodPostToEdit.geometry = {
+                type: "Point",
+                coordinates: [long,lat]
+            }  
         }
 
 
@@ -184,11 +194,21 @@ expressrouter.post("/",userAuthenticated,upload.array('image'), validateFoodpost
         //ERROR HANDLING INSERT HERE
 
         
-        const lat = data[0].latitude;
-        const long = data[0].longitude;
-        foodpostToSave.geometry = {
-            type: "Point",
-            coordinates: [long,lat]
+        let lat = 1.3342641;
+        let long = 103.8490489;
+
+        if(!(err || !data.length)){
+            lat = data[0].latitude;
+            long = data[0].longitude;
+            foodpostToSave.geometry = {
+                type: "Point",
+                coordinates: [long,lat]
+            }  
+        }else{
+            foodpostToSave.geometry = {
+                type: "Point",
+                coordinates: [long,lat]
+            }  
         }
 
         

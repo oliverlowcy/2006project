@@ -46,8 +46,8 @@ async function seedDB(){
         let queryLocation = thelocation + " Singapore";
         await ggGeocoder.geocode(queryLocation, function (err, data) {
         
-            let lat = 0;
-            let long = 0; 
+            let lat = 1.3342641;
+            let long = 103.8490489;
 
             if(!(err || !data.length)){
                 lat = data[0].latitude;
