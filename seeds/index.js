@@ -42,17 +42,27 @@ async function seedDB(){
             rating:2,
         })
 
-        let queryLocation = thelocation + "Singapore";
+        let queryLocation = thelocation + " Singapore";
         await ggGeocoder.geocode(queryLocation, function (err, data) {
         
-            //ERROR HANDLING INSERT HERE
+            let lat = 0;
+            let long = 0; 
 
-            const lat = data[0].latitude;
-            const long = data[0].longitude;
-            foodpost.geometry = {
-                type: "Point",
-                coordinates: [long,lat]
-            }  
+            if(!(err || !data.length)){
+                lat = data[0].latitude;
+                long = data[0].longitude;
+                foodpost.geometry = {
+                    type: "Point",
+                    coordinates: [long,lat]
+                }  
+            }else{
+                foodpost.geometry = {
+                    type: "Point",
+                    coordinates: [long,lat]
+                }  
+            }
+
+            
     
         })
 

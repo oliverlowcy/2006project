@@ -143,8 +143,6 @@ expressrouter.put("/:id",userAuthenticated,isPostWriter, upload.array('image'), 
             coordinates: [long,lat]
         }
 
-        
-        
 
     })
 
