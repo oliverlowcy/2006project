@@ -1,8 +1,7 @@
 body{
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("/photos/burger2.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url("/photos/pancakes.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    
 }
 
 
@@ -85,7 +84,6 @@ header{
 }
 
 #firstButton{
-    margin-top: 20px;
     font-weight: bold;
 
 }

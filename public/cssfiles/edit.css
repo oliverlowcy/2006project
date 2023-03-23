@@ -1,3 +1,9 @@
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url("/photos/pancakes.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 
 .box1{
     display: flex;
@@ -19,6 +25,20 @@
     display: flex;
     flex-direction: column;
     padding: 0 15px 0 15px;
+    
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 0 15px;
+    
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 250px;
     
 }
 
@@ -51,7 +71,8 @@ header{
     color: #fff;
     font-size: 15px;
     padding: 0 0 0 45px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.3);
+    font-weight: bold;
     outline: none;
     margin-top: 15px;
 }
@@ -63,13 +84,13 @@ header{
     color: #fff;
     font-size: 15px;
     padding: 10 0 0 45px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.3);
+    font-weight: bold;
     outline: none;
     margin-top: 15px;
 }
 
 #firstButton{
-    margin-top: 20px;
     font-weight: bold;
 
 }
@@ -212,5 +233,9 @@ select {
     color: #23b499;
  }
 
+
+ #foodpostCarousel{
+    margin-top: 130px;
+ }
 
 
