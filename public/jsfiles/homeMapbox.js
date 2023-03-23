@@ -18,7 +18,7 @@ async function successLocation(position){
         // const json = await response.json();
         // const distanceTo = (json.trips[0].legs[0].distance)/1000
 
-        const dist = await getDistance(position.coords.longitude,position.coords.latitude,doc.children[3].textContent.split(",")[0],doc.children[3].textContent.split(",")[1])
+        const dist = await getDistance(position.coords.longitude,position.coords.latitude,doc.children[4].textContent.split(",")[0],doc.children[4].textContent.split(",")[1])
 
 
 

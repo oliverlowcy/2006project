@@ -39,6 +39,7 @@ async function seedDB(){
             writer:"63d7874608c5c2c0b0320891",
             price: randomNum2,
             location: thelocation,
+            description : "A DESCRIPTION HERE",
             rating:2,
         })
 

@@ -163,6 +163,7 @@ expressrouter.delete("/:id",userAuthenticated,isPostWriter,catchAsyncWrapper(asy
 }))
 
 expressrouter.post("/",userAuthenticated,upload.array('image'), validateFoodpost, catchAsyncWrapper(async(req,res) => {
+
     var listOfImageObjectToAdd = []
     var imageObjToAdd = {}
     for (var x of req.files){

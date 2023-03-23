@@ -1,53 +1,86 @@
 <%- include('./partials/header')%>
-<body class = "d-flex flex-column vh-100">
+<body class = "d-flex flex-column">
   <%- include('./partials/flasher')%>
   <%- include('./partials/navbar')%>
-  <div class = "container">
-    <form action= "/foodposts" method = "POST" class="validated-form" novalidate enctype="multipart/form-data">
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name = "foodpost[name]" placeholder="First name" required>
-            <div class="valid-feedback">
-              Looks good!
+  
+  <link rel="stylesheet" href="/cssfiles/newOrEditPost.css">
+  <link rel="stylesheet" href="/cssfiles/form.css">
+
+  <div class="box2">
+      <div class="container1">
+        <form action= "/foodposts" method = "POST" class="validated-form"  enctype="multipart/form-data">              
+          <div class="top">
+                  <header><strong>New Post</strong></header>
+              </div>
+      
+              <div class="input-field">
+                  <input type="text" class="input2" name = "foodpost[name]" placeholder="Name" required>
+                  <i class='bx bx-user bx-burst' ></i>
+              </div>
+
+              <div class="input-field">
+                <input type="text" class="input2" name = "foodpost[price]" placeholder="Price" required>
+                <i class='bx bx-dollar bx-burst' ></i>
+              </div>
+
+              <div class="input-field">
+                <input type="text" class="input2" name = "foodpost[location]" placeholder="Location" required>
+                <i class='bx bx-pin bx-burst' ></i>
+              </div>
+
+
+
+            
+            <div class="input-field">
+              <textarea class = "input3" cols="50" rows="10" name = "foodpost[description]" placeholder="Description"></textarea>
+              <i class='bx bx-text bx-burst' id = "descriptionItag"></i>
             </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="price">Price</label>
-            <input type="text" class="form-control" id="price" name = "foodpost[price]" placeholder="Price" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div>
-          
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                <label for="location">Location</label>
-                <input type="text" class="form-control" id="location" name = "foodpost[location]" placeholder="Location" required>
-                <div class="valid-feedback">
-                  Looks good!
+
+            <br>
+            <div class = "container1">
+              <div class = "row">
+                
+                <div class = "col-6">
+                  <select id="rating" name="foodpost[rating]">
+                    <option selected disabled>Choose A Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+  
+                </div>  
+                
+                <div class = "col-4 ml-4">
+                  <input type="file" name="image" id="file" multiple>
+                  <label for="file">
+                    Choose a photo <i class='bx bx-paperclip' ></i>
+                  </label>
+  
                 </div>
+                
+                
+              </div>
+              
             </div>
-            <input type="file" name="image" id="" multiple>
-            <label for="rating">Choose a Rating:</label>
-            <select id="rating" name="foodpost[rating]">
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-        </div>  
-    
-        <button class="btn btn-primary" type="submit">Submit form</button>
-      </form>
-      
-    
-        </div>
-    </div>
+            
+          <br>
+          
+          <div class="input-field">
+            <input type="submit" class="submit" value="Create New Post" id="firstButton">
+          </div>
+          </form>
+          
+      </div>
+  </div>  
+
+  <%- include('./partials/bsValidation')%>
+
+</body>
+</html>
+  
     
     
-      
-    <%- include('./partials/footer')%>
-    
+

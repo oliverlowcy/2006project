@@ -48,6 +48,7 @@
                 <a href = "/foodposts/<%= arrOfFoodPost[i]._id %>"><%= arrOfFoodPost[i].name %></a>
                 <p>By <%= arrOfFoodPost[i].writer.username %></p>
                 <p>At <%= arrOfFoodPost[i].location %></p>
+                <p>DESCRIPTION <%= arrOfFoodPost[i].description %></p>
                 <p hidden = true><%= arrOfFoodPost[i].geometry.coordinates %></p>
             </div>
             

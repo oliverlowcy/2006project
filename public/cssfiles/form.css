@@ -1,0 +1,216 @@
+
+.box1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.box2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.container1{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 0 15px;
+    
+}
+
+
+header{
+    color: #fff;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+
+.input-field .input{
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 15px;
+    padding: 0 0 0 45px;
+    background: rgba(255,255,255,0.2);
+    outline: none;
+    margin-top: 15px;
+}
+
+.input-field .input2{
+    height: 45px;
+    width: 100%;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    padding: 0 0 0 45px;
+    background: rgba(255,255,255,0.2);
+    outline: none;
+    margin-top: 15px;
+}
+
+
+.input-field .input3{
+    width: 100%;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    padding: 10 0 0 45px;
+    background: rgba(255,255,255,0.2);
+    outline: none;
+    margin-top: 15px;
+}
+
+#firstButton{
+    margin-top: 20px;
+    font-weight: bold;
+
+}
+
+i{
+    position: relative;
+    top: -30px;
+    left: 17px;
+    color: #fff;
+}
+::-webkit-input-placeholder{
+    color: #fff;
+}
+.submit{
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 45px;
+    outline: none;
+    width: 100%;
+    color: black;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: .3s ;
+}
+.submit:hover{
+    background-color: black;
+    color:white;
+}
+.two-col{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #fff;
+    font-size: small;
+    margin-top: 10px;
+}
+.one{
+    display: flex;
+}
+label a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#secondButton{
+    background-color: black;
+    border-color: grey;
+    border-style: solid;
+    border-width: 1px;
+    color:white;
+    font-weight: bold;
+}
+
+#secondButton:hover{
+    background-color: grey;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    color:black;
+}
+
+textarea{
+    padding-top: 10px;
+}
+
+#descriptionItag{
+    position: relative;
+    top: -220px;
+    left: 17px;
+    color: #fff;
+}
+
+input[type="file"] {
+    display:none;
+}
+
+label[for="file"]{
+    color: white;
+    height: 60px;
+    border-radius: 10px;
+    width: 200px;
+    background-color: #40E0D0;
+    transition: 0.3s;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label[for="file"]:hover{
+    background-color: black;
+}
+
+label[for="file"] i{
+    position: relative;
+    top: -1px;
+    left: 8px;
+    color: #fff;
+}
+
+
+select {
+    box-shadow:none;
+    border:0!important;
+    background: #5c6664;
+    background-image: none;
+    flex: 1;
+    padding: 0 .5em;
+    color:#fff;
+    cursor:pointer;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+ }
+ select::-ms-expand {
+    display: none;
+ }
+ .select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #5c6664;
+    overflow: hidden;
+    border-radius: .25em;
+ }
+ .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #2b2e2e;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+ }
+ .select:hover::after {
+    color: #23b499;
+ }
+
+
+

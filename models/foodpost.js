@@ -17,6 +17,10 @@ const foodpostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
     images: [
         {
             url : String,
