@@ -1,5 +1,5 @@
 body{
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url("/photos/pancakes.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url("/photos/mussel.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -35,10 +35,17 @@ body{
     
 }
 
+.container3{
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 0 15px;
+    width:500px;
+}
+
 .container2{
     display: flex;
     flex-direction: column;
-    padding: 0 0 0 250px;
+    padding: 0 0 0 270px;
     
 }
 
@@ -179,6 +186,7 @@ label[for="file"]{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 60px;
 }
 
 label[for="file"]:hover{
@@ -234,8 +242,12 @@ select {
  }
 
 
- #foodpostCarousel{
+ #carouselExampleIndicators{
     margin-top: 130px;
+ }
+
+ .form-check-label{
+    color:white;
  }
 
 

@@ -32,7 +32,7 @@ body{
     display: flex;
     flex-direction: column;
     padding: 0 15px 0 15px;
-    
+    width: 500px;
 }
 
 
@@ -172,6 +172,8 @@ label[for="file"]{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 60px;
+
 }
 
 label[for="file"]:hover{
