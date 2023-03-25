@@ -1,36 +1,50 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<%- include('./partials/header')%>
+<body class = "d-flex flex-column vh-100">
+    <div id = "preloader"></div>
+
+    <%- include('./partials/flasher')%>
+    <%- include('./partials/navbar')%>
+
     <script src="/jsfiles/liveSearch.js"></script>
 
     <h1>Search</h1>
     
     <form action="/foodposts/search" method = "GET" name = "searchBar">
         <input type="text" name="search" placeholder="food search">
+        <input type="checkbox" id="searchUser" name="searchUser" value="true">
+        <label for="searchUser"> Search by user?</label><br>
         <input type="submit" value="submit">
 
     </form>
     
-    <% if(match){ %>
+
+
+
+    <% if(emptyResult){ %>
+        <h1>NO RESULTS FOUND</h1>
+    <% }else {%>
         <% for(var i = 0;i<result.length;i++){ %>
             <div class = "post">
-                <a href = "/foodposts/<%= result[i]._id %>"><%= result[i].name %></a>
-                <p>By <%= result[i].writer.username %></p>
-                <p>At <%= result[i].location %></p>
-                <p hidden = true><%= result[i].geometry.coordinates %></p>
+                <a href = "/profile/<%= result[i]._id %>"><%= result[i].username %></a>
             </div>
             
-
+    
         <% }%>
     <% } %>
 
 
+    <link rel="stylesheet" href="/cssfiles/searchUser.css">
+    <link rel="stylesheet" href="/cssfiles/preloader.css">
+    
+    <script>
+        
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load",function(){
+            setTimeout(function() {
+                loader.style.display = "none";
+            }, 1000)
+            
+        })
+    </script>
 
-
-</body>
-</html>
+<%- include('./partials/footer')%>

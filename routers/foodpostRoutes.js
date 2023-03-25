@@ -75,39 +75,38 @@ expressrouter.get("/", catchAsyncWrapper(async(req,res) => {
 
 expressrouter.get("/search" , catchAsyncWrapper(async(req,res) => {
     let result = []
-
+    let emptyResult = false;
 
     if(req.query.search) {
-
         if(req.query.searchUser){
             const regex = new RegExp(escapeRegex(req.query.search), 'gi');
             result = await User.find({username: regex});
-            if(result){
-                match = true;
+            if(!(result.length)){
+                emptyResult = true;
+            }else{
+                if(result.length > 7){
+                    result = result.slice(0,6)
+                }
             }
-            res.render("search" , {result : result , match : match})
+            return res.render("searchUser" , {result : result , emptyResult:emptyResult})
         }else{
             const regex = new RegExp(escapeRegex(req.query.search), 'gi');
             result = await Foodpost.find({name: regex}).populate("writer");
-            if(result){
-                match = true;
+            if(!(result.length)){
+                emptyResult = true;
+            }else{
+                if(result.length > 7){
+                    result = result.slice(0,6)
+                }
             }
-            res.render("search" , {result : result , match : match})
+            return res.render("searchFoodpost" , {result : result , emptyResult:emptyResult})
         }
         
         
+    }else{
+        return res.render("search");
     }
     
-
-    res.render("search" , {result : result , match : match})
-
-
-    if(req.query.searchUser){
-
-    }
-
-    console.log(req.query)
-    res.render("search")
 
     
     
@@ -243,5 +242,9 @@ expressrouter.post("/",userAuthenticated,upload.array('image'), validateFoodpost
 function escapeRegex(text){
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
+
+
+
+
 
 module.exports = expressrouter;

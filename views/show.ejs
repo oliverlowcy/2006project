@@ -1,5 +1,20 @@
 <%- include('./partials/header')%>
 <body>
+    <div id = "preloader"></div>
+    <link rel="stylesheet" href="/cssfiles/preloader.css">
+    
+    <script>
+        
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load",function(){
+            setTimeout(function() {
+                loader.style.display = "none";
+            }, 1000)
+            
+        })
+    </script>
+
+
     <%- include('./partials/flasher')%>
     <%- include('./partials/navbar')%>
 
@@ -110,6 +125,7 @@
     <script src="/jsfiles/showMapbox.js"></script>
     <!-- ======================================================================================================================================== -->
 
+    
     
 
 <%- include('./partials/footer')%>
