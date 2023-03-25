@@ -75,21 +75,39 @@ expressrouter.get("/", catchAsyncWrapper(async(req,res) => {
 
 expressrouter.get("/search" , catchAsyncWrapper(async(req,res) => {
     let result = []
-    let match = false;
 
 
     if(req.query.search) {
-        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-        result = await Foodpost.find({name: regex}).populate("writer");
-        if(result){
-            match = true;
+
+        if(req.query.searchUser){
+            const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+            result = await User.find({username: regex});
+            if(result){
+                match = true;
+            }
+            res.render("search" , {result : result , match : match})
+        }else{
+            const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+            result = await Foodpost.find({name: regex}).populate("writer");
+            if(result){
+                match = true;
+            }
+            res.render("search" , {result : result , match : match})
         }
-        res.render("search" , {result : result , match : match})
+        
         
     }
     
 
     res.render("search" , {result : result , match : match})
+
+
+    if(req.query.searchUser){
+
+    }
+
+    console.log(req.query)
+    res.render("search")
 
     
     
