@@ -54,21 +54,26 @@
         </div>
     <% }else {%>
         <div class="container">
-            <br>
             <% if(result.length==1){ %>
                 <h1 class = "mb-3">Displaying top <%=result.length%> result </h1>
             <% }else {%>
                 <h1 class = "mb-3">Displaying top <%=result.length%> results </h1>
             <% } %>
+            <br>
             <% for(var i = 0;i<result.length;i++){ %>
-                <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title"><%= result[i].username %></h5>
-                      <p class="card-text">Email: <%= result[i].email %></p>
-                      <a href="/profile/<%= result[i]._id %>" class="card-link">View Profile</a>
+                <div class = "container">
+                    <div class="card text-center">
+                        <div class="card-body">
+                          <h5 class="card-title"><%=result[i].username%></h5>
+                          <p class="card-text"><%=result[i].email%></p>
+                          <a href="/profile/<%=result[i]._id%>" class="btn btn1">View Profile</a>
+                          
+                        </div>
+
                     </div>
                 </div>
                 <br>
+
         
             <% }%>
         </div>

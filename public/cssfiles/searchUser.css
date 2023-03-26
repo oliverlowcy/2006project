@@ -108,19 +108,58 @@ h4{
 .card{
     width: 50%;
     margin: auto;
-    background: black;
+    background: #000;
     color: white;
     border-radius: 15px;
+    transition: 0.4s ease-out;
+    z-index: 2;
+    padding: 10px;
+    box-shadow: 0 0 10px #03e9f4, 0 0 20px #03e9f4;
+}
+.btn{
+    color: white;
+    background: black;
+    cursor: pointer;
+    font-size: 10px;
+    border: 3px solid #03e9f4;
+    box-shadow: 0 0 5px #03e9f4, 0 0 10px #03e9f4;
+    text-transform: uppercase;
+    letter-spacing: 2px;  
+    position: relative;
+    overflow: hidden;
+    z-index:0;
+    transition: 1s all ease;
+}
+.btn::before{
+    background:#03e9f4;
+    content:"";
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index:-1;
+    transition: all 0.6s ease;
+
 }
 
-a{
-    text-decoration: none;
-    color:white;
-    font-weight: bold;
-    font-size: 20px;
+.btn1::before{
+    width:100%;
+    height:0;
+    transform: translate(-50%,-50%) rotate(45deg);
+    
+}
+.btn1:hover::before{
+    height:380%;
+
+
 }
 
-a:hover{
-    color:grey;    
-
+.card-body{
+    background-color: black;
 }
+.card:hover{
+    transform: translate(2%,2%);
+}
+

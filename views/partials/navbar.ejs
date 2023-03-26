@@ -4,7 +4,7 @@
 
 <div class = "myNavbar">
     <nav>
-        <h2><a href="/" class = "logo">EATSTAGRAM</a></h2>
+        <h2><a href="/" class = "logo"><strong> EATSTAGRAM</strong></a></h2>
         <ul>
             <li><a href="/foodposts">All Foodposts</a></li>
             <li><a href="/foodposts/new">New Foodpost</a></li>
@@ -15,9 +15,9 @@
             <% } %>
         </ul>
         <% if(!currentUser){ %>
-            <a href = "/profile/login" class="btn btn-info mybutton" >Login</a>
+            <a href = "/profile/login" class="btn-info" id = "mybutton">Login</a>
         <%} else {%>
-            <a href = "/profile/logout" class="btn btn-info mybutton" >Logout</a>
+            <a href = "/profile/logout" class="btn-info" id = "mybutton">Logout</a>
         <% } %>
     </nav>
 </div>

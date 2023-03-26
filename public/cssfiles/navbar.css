@@ -47,7 +47,7 @@ nav ul li a:hover{
     font-size: 17px;
 }
 
-.mybutton{
+#mybutton{
     border:none;
     background: green;
     padding: 12px 30px;
@@ -55,9 +55,10 @@ nav ul li a:hover{
     color:white;
     transition: 0.4s;
     font-weight: bold;
+    text-decoration: none;
 }
 
-.mybutton:hover{
+#mybutton:hover{
     transform: scale(1.2);
     background: black;
 }
