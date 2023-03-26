@@ -28,7 +28,7 @@
                     <div class="input-wrapper">
                         <i class='bx bx-x bx-md clear-icon' ></i>
                         <input class = "searchBar" type="text" placeholder="Search" name = "search">
-                        <button type="submit" class = "search-button"><i class='bx bx-search bx-md '></i></button>
+                        <button type="submit" class = "search-button"><i class='bx bx-search bx-md'></i></button>
                     </div>
                 </div>
                 <div class = "col-2">
@@ -82,6 +82,7 @@
         const clearIcon = document.querySelector(".clear-icon");
         const searchBar = document.querySelector(".searchBar");
 
+
         searchBar.addEventListener("keyup", () => {
             if(searchBar.value && clearIcon.style.visibility != "visible"){
             clearIcon.style.visibility = "visible";
@@ -94,6 +95,26 @@
             searchBar.value = "";
             clearIcon.style.visibility = "hidden";
         })
+
+
+        const button = document.getElementsByTagName("button")[0];
+        const iTag = document.getElementsByTagName("i")[1]
+        button.addEventListener('mouseenter', function() {
+        // do something when the user hovers over the div
+            iTag.classList.add("bx-lg")
+            iTag.classList.add("bx-flashing")
+        });
+
+
+        button.addEventListener('mouseleave', function() {
+        // do something when the user hovers over the div
+            iTag.classList.remove("bx-lg")
+            iTag.classList.remove("bx-flashing")
+
+        });
+
+
+
     </script>
     
     <link rel="stylesheet" href="/cssfiles/searchUser.css">

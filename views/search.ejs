@@ -69,6 +69,24 @@
             searchBar.value = "";
             clearIcon.style.visibility = "hidden";
         })
+
+
+        const button = document.getElementsByTagName("button")[0];
+        const iTag = document.getElementsByTagName("i")[1]
+        button.addEventListener('mouseenter', function() {
+        // do something when the user hovers over the div
+            iTag.classList.add("bx-lg")
+            iTag.classList.add("bx-flashing")
+        });
+
+
+        button.addEventListener('mouseleave', function() {
+        // do something when the user hovers over the div
+            iTag.classList.remove("bx-lg")
+            iTag.classList.remove("bx-flashing")
+
+        });
+
     </script>
 
 </body>
