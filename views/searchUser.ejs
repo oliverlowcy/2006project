@@ -49,9 +49,17 @@
 
 
     <% if(emptyResult){ %>
-        <h1>NO RESULTS FOUND</h1>
+        <div class = "container">
+            <h1>NO RESULTS FOUND</h1>
+        </div>
     <% }else {%>
         <div class="container">
+            <br>
+            <% if(result.length==1){ %>
+                <h1 class = "mb-3">Displaying top <%=result.length%> result </h1>
+            <% }else {%>
+                <h1 class = "mb-3">Displaying top <%=result.length%> results </h1>
+            <% } %>
             <% for(var i = 0;i<result.length;i++){ %>
                 <div class="card">
                     <div class="card-body">
@@ -90,5 +98,7 @@
     
     <link rel="stylesheet" href="/cssfiles/searchUser.css">
 
+
+    
 </body>
 </html>
