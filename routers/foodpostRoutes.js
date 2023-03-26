@@ -84,8 +84,8 @@ expressrouter.get("/search" , catchAsyncWrapper(async(req,res) => {
             if(!(result.length)){
                 emptyResult = true;
             }else{
-                if(result.length > 7){
-                    result = result.slice(0,6)
+                if(result.length > 5){
+                    result = result.slice(0,5)
                 }
             }
             return res.render("searchUser" , {result : result , emptyResult:emptyResult})
@@ -95,8 +95,8 @@ expressrouter.get("/search" , catchAsyncWrapper(async(req,res) => {
             if(!(result.length)){
                 emptyResult = true;
             }else{
-                if(result.length > 7){
-                    result = result.slice(0,6)
+                if(result.length > 5){
+                    result = result.slice(0,5)
                 }
             }
             return res.render("searchFoodpost" , {result : result , emptyResult:emptyResult})

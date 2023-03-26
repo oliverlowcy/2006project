@@ -1,39 +1,6 @@
 <%- include('./partials/header')%>
-<body class = "d-flex flex-column vh-100">
+<body>
     <div id = "preloader"></div>
-
-    <%- include('./partials/flasher')%>
-    <%- include('./partials/navbar')%>
-
-    <script src="/jsfiles/liveSearch.js"></script>
-
-    <h1>Search</h1>
-    
-    <form action="/foodposts/search" method = "GET" name = "searchBar">
-        <input type="text" name="search" placeholder="food search">
-        <input type="checkbox" id="searchUser" name="searchUser" value="true">
-        <label for="searchUser"> Search by user?</label><br>
-        <input type="submit" value="submit">
-
-    </form>
-    
-
-
-
-    <% if(emptyResult){ %>
-        <h1>NO RESULTS FOUND</h1>
-    <% }else {%>
-        <% for(var i = 0;i<result.length;i++){ %>
-            <div class = "post">
-                <a href = "/profile/<%= result[i]._id %>"><%= result[i].username %></a>
-            </div>
-            
-    
-        <% }%>
-    <% } %>
-
-
-    <link rel="stylesheet" href="/cssfiles/searchUser.css">
     <link rel="stylesheet" href="/cssfiles/preloader.css">
     
     <script>
@@ -47,4 +14,81 @@
         })
     </script>
 
-<%- include('./partials/footer')%>
+    <%- include('./partials/flasher')%>
+    <%- include('./partials/navbar')%>
+
+
+    <div class = "container">
+        <br><br>
+        <h1><strong>SEARCH</strong></h1>
+        <br>
+        <form action="/foodposts/search" method = "GET" name = "searchBar">
+            <div class = "row">
+                <div class = "col-10">
+                    <div class="input-wrapper">
+                        <i class='bx bx-x bx-md clear-icon' ></i>
+                        <input class = "searchBar" type="text" placeholder="Search" name = "search">
+                        <button type="submit" class = "search-button"><i class='bx bx-search bx-md '></i></button>
+                    </div>
+                </div>
+                <div class = "col-2">
+                    <h4><strong>Search By User</strong></h4>
+                    <input type="checkbox" id="searchUser" name="searchUser" value="true">
+                </div>
+            </div>
+            
+
+
+    
+        </form>
+        <br>
+        <br>
+        
+    </div>
+
+
+
+    <% if(emptyResult){ %>
+        <h1>NO RESULTS FOUND</h1>
+    <% }else {%>
+        <div class="container">
+            <% for(var i = 0;i<result.length;i++){ %>
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= result[i].username %></h5>
+                      <p class="card-text">Email: <%= result[i].email %></p>
+                      <a href="/profile/<%= result[i]._id %>" class="card-link">View Profile</a>
+                    </div>
+                </div>
+                <br>
+        
+            <% }%>
+        </div>
+        
+    <% } %>
+
+
+
+
+    <script>
+        const clearIcon = document.querySelector(".clear-icon");
+        const searchBar = document.querySelector(".searchBar");
+
+        searchBar.addEventListener("keyup", () => {
+            if(searchBar.value && clearIcon.style.visibility != "visible"){
+            clearIcon.style.visibility = "visible";
+            } else if(!searchBar.value) {
+            clearIcon.style.visibility = "hidden";
+            }
+        });
+
+        clearIcon.addEventListener("click", () => {
+            searchBar.value = "";
+            clearIcon.style.visibility = "hidden";
+        })
+    </script>
+    
+    <link rel="stylesheet" href="/cssfiles/searchUser.css">
+
+</body>
+</html>

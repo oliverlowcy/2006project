@@ -18,20 +18,58 @@
     <%- include('./partials/navbar')%>
 
 
-    <h1>Search</h1>
+    
     
 
-    <form action="/foodposts/search" method = "GET" name = "searchBar">
-        <input type="text" name="search" placeholder="food search">
-        <input type="checkbox" id="searchUser" name="searchUser" value="true">
-        <label for="searchUser"> Search by user?</label><br>
-        <input type="submit" value="submit">
+    <div class = "container">
+        <br><br>
+        <h1><strong>SEARCH</strong></h1>
+        <br>
+        <form action="/foodposts/search" method = "GET" name = "searchBar">
+            <div class = "row">
+                <div class = "col-10">
+                    <div class="input-wrapper">
+                        <i class='bx bx-x bx-md clear-icon' ></i>
+                        <input class = "searchBar" type="text" placeholder="Search" name = "search">
+                        <button type="submit" class = "search-button"><i class='bx bx-search bx-md '></i></button>
+                    </div>
+                </div>
+                <div class = "col-2">
+                    <h4><strong>Search By User</strong></h4>
+                    <input type="checkbox" id="searchUser" name="searchUser" value="true">
+                </div>
+            </div>
+            
 
-    </form>
+
     
+        </form>
+        
+    </div>
+
+
+
+
 
     <link rel="stylesheet" href="/cssfiles/search.css">
 
+    <script>
+        const clearIcon = document.querySelector(".clear-icon");
+        const searchBar = document.querySelector(".searchBar");
 
+        searchBar.addEventListener("keyup", () => {
+            if(searchBar.value && clearIcon.style.visibility != "visible"){
+            clearIcon.style.visibility = "visible";
+            } else if(!searchBar.value) {
+            clearIcon.style.visibility = "hidden";
+            }
+        });
 
-<%- include('./partials/footer')%>
+        clearIcon.addEventListener("click", () => {
+            searchBar.value = "";
+            clearIcon.style.visibility = "hidden";
+        })
+    </script>
+
+</body>
+</html>
