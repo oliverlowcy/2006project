@@ -1,21 +1,6 @@
 <%- include('./partials/header')%>
 <body class = "d-flex flex-column vh-100">
-    <div id = "preloader"></div>
-    <link rel="stylesheet" href="/cssfiles/preloader.css">
-    
-    <script>
-        
-        var loader = document.getElementById("preloader");
-        window.addEventListener("load",function(){
-            setTimeout(function() {
-                loader.style.display = "none";
-            }, 1000)
-            
-        })
-    </script>
-
-    
-
+    <%- include('./partials/preloader')%>
     <%- include('./partials/flasher')%>
     <%- include('./partials/navbar')%>
     <style>
