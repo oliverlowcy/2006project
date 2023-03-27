@@ -161,5 +161,7 @@ h4{
 }
 .card:hover{
     transform: translate(2%,2%);
+    box-shadow: 0 0 60px #03e9f4, 0 0 120px #03e9f4;
+
 }
 

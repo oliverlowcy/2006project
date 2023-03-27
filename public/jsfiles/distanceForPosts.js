@@ -5,7 +5,7 @@ navigator.geolocation.getCurrentPosition(successLocation,errorLocation,{enableHi
 async function successLocation(position){
     console.log("MINE CENTER IS ", position.coords.longitude , "," , position.coords.latitude)
     let distanceArr = []
-    const x = document.getElementsByClassName("post")
+    const x = document.getElementsByClassName("card-body")
     for (let doc of x){
         // console.log(doc.children[3].textContent)
         // to know the coordinates of each location in food post
@@ -19,14 +19,10 @@ async function successLocation(position){
         // const distanceTo = (json.trips[0].legs[0].distance)/1000
 
         const dist = await getDistance(position.coords.longitude,position.coords.latitude,doc.children[4].textContent.split(",")[0],doc.children[4].textContent.split(",")[1])
+        const distStr = "  (Est. Distance " + dist + " km)"
+        doc.children[2].textContent += distStr
+        
 
-
-
-        const node = document.createElement("p");
-        const textnode = document.createTextNode("Estimated distance is " + dist + " km");
-        node.appendChild(textnode);
-        doc.appendChild(node);
-        distanceArr.push(dist)
 
 
 
