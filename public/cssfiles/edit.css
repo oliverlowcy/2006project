@@ -243,11 +243,21 @@ select {
 
 
  #carouselExampleIndicators{
-    margin-top: 130px;
+    margin-top: 80px;
+    
  }
 
  .form-check-label{
     color:white;
  }
 
+ img{
+    height: 500px;
+    border-radius: 20px;
+ }
+
+
+ .carousel-inner{
+    border-radius: 20px;
+ }
 
