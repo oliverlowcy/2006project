@@ -5,9 +5,15 @@
     <%- include('./partials/navbar')%>
     <link rel="stylesheet" href="/cssfiles/landingPage.css">
 
+    <br>
+    <br>
 
     <div class = "container welcome">
-        <h1><strong>WELCOME OLIVER</strong></h1>
+        <% if(currentUser){ %>
+            <h1><strong>WELCOME <%= currentUser.username %></strong></h1>
+        <%}else{ %>
+            <h1><strong>WELCOME</strong></h1>
+        <%} %>
         <br>
         <h2>What would you like to do?</h2>
         <br>

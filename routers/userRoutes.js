@@ -44,7 +44,7 @@ expressrouter.post("/login", passport.authenticate("local", { failureFlash: true
     if(req.session.returnTo){
         redirectUrl = req.session.returnTo;
     }else{
-        redirectUrl = "/foodposts";
+        redirectUrl = "/";
     }
     delete req.session.returnTo;
     res.redirect(redirectUrl);
@@ -53,7 +53,7 @@ expressrouter.post("/login", passport.authenticate("local", { failureFlash: true
 expressrouter.get("/logout", async(req, res) => {
     req.logout(function(err) {
         if (err) { return next(err); }
-        res.redirect("/foodposts");
+        res.redirect("/");
     });
 })
 
