@@ -4,7 +4,7 @@
     bottom: 0; 
     height: 550;
     width:100%;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 50px;
     border-radius: 10px;
 }
@@ -43,7 +43,7 @@ img{
 }
 
 .mycontainer1{
-    margin-left: 216px;
+    margin-left: 206px;
     height: 450px;
     
 }
@@ -57,19 +57,27 @@ img{
 
 a{
     text-decoration: none;
+    color:white;
+    font-weight: bold;
+
+}
+
+
+a:hover{
+    color:grey;
 }
 
 #editDelete{
     position:absolute;
     bottom:0;
-    left: 140;
+    left: 120;
     display: flex;
 }
 
 
 #mybutton2{
     border:none;
-    background: blue;
+    background: #40E0D0;
     padding: 12px 30px;
     border-radius: 30px;
     color:white;
@@ -78,7 +86,7 @@ a{
     text-decoration: none;
 }
 
-#mybutton:hover{
+#mybutton2:hover{
     transform: scale(1.1);
     background: black;
 }
@@ -92,7 +100,7 @@ a{
     width: 165px;
     color: white;
     font-weight: bold;
-    background: red;
+    background: #f44336;
     cursor: pointer;
     transition: .3s ;
 }

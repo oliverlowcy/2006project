@@ -75,7 +75,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title"><%= result[i].name%></h5>
-                            <p class="card-text"><i class='bx bx-user mr-2' ></i><%= result[i].writer.username %></p>
+                            <p class="card-text"><i class='bx bx-user mr-2' ></i><a href="/profile/<%= result[i].writer._id %>"><%= result[i].writer.username %></a></p>
                             <p class="card-text">At <%= result[i].location %></p>
                             <p class="card-text description"><strong><%= result[i].description %></strong></p>
                             <p hidden = true><%= result[i].geometry.coordinates %></p>

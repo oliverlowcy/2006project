@@ -54,7 +54,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title"><%= arrOfFoodPost[i].name%></h5>
-                            <p class="card-text"><i class='bx bx-user mr-2' ></i><%= arrOfFoodPost[i].writer.username %></p>
+                            <p class="card-text"><i class='bx bx-user mr-2' ></i><a href="/profile/<%= arrOfFoodPost[i].writer._id %>"><%= arrOfFoodPost[i].writer.username %></a></p>
                             <p class="card-text"><i class='bx bx-pin mr-2' ></i><%= arrOfFoodPost[i].location %></p>
                             <p class="card-text description"><strong><%= arrOfFoodPost[i].description %></strong></p>
                             <p hidden = true><%= arrOfFoodPost[i].geometry.coordinates %></p>

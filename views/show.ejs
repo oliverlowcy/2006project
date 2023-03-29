@@ -15,7 +15,16 @@
         
         <div class="row">
             <div class="col-6">
-                <div id="foodpostCarousel" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <ol class="carousel-indicators">
+                      <% for(let y = 0; y < singleFoodPost.images.length ; y++){ %>
+                          <%if(y==0){ %>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="<%= y %>" class="active"></li>
+                          <%}else{ %>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="<%= y %>"></li>
+                          <%} %>
+                      <% }%>
+                    </ol>
                     <div class="carousel-inner">
                         <% if(!singleFoodPost.images.length){ %>    
                             <div class="carousel-item active">
@@ -38,11 +47,11 @@
 
                     </div>
                     <% if(singleFoodPost.images.length > 1) {%>
-                    <a class="carousel-control-prev" href="#foodpostCarousel" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#foodpostCarousel" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>

@@ -184,3 +184,15 @@ cursor: pointer;
 .description{
     color: grey;
 }
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+    color:white;
+
+}
+
+
+a:hover{
+    color:grey;
+}
