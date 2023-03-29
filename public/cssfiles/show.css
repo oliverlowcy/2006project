@@ -1,0 +1,103 @@
+
+#map { 
+    top: 0; 
+    bottom: 0; 
+    height: 550;
+    width:100%;
+    margin-left: 20px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+#foodpostCarousel{
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    width:100%;
+}
+
+
+.carousel-inner{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+img{
+    height:450px;
+}
+
+.col-6{
+    padding: 0;
+}
+
+.card{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: 630px;
+    height: 100%;
+
+}
+
+.mycontainer1{
+    margin-left: 216px;
+    height: 450px;
+    
+}
+
+.card-title{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+#editDelete{
+    position:absolute;
+    bottom:0;
+    left: 140;
+    display: flex;
+}
+
+
+#mybutton2{
+    border:none;
+    background: blue;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color:white;
+    transition: 0.4s;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#mybutton:hover{
+    transform: scale(1.1);
+    background: black;
+}
+
+.submit{
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    height: 48px;
+    outline: none;
+    width: 165px;
+    color: white;
+    font-weight: bold;
+    background: red;
+    cursor: pointer;
+    transition: .3s ;
+}
+
+.submit:hover{
+    transform: scale(1.1);
+    background: black;
+}

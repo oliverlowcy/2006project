@@ -61,21 +61,21 @@
         </div>
         <br>
         <% for(var i = 0;i<result.length;i++){ %>
+            
             <div class="card sm-3" >
                 <div class="row">
                     <div class="col-sm-4 align-self-center">
-                    <a href="https://developer.mozilla.org/en-US/">
+                    
                     <% if(result[i].images.length){ %>
                         <img class="img-fluid" alt="Responsive image" src="<%= result[i].images[0].url %>">
                     <%}else{%>
                         <img class="img-fluid" alt="Responsive image" src="/photos/defaultImage.jpg">
                     <%}%>
-                    </a>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title"><%= result[i].name%></h5>
-                            <p class="card-text"><%= result[i].writer.username %></p>
+                            <p class="card-text"><i class='bx bx-user mr-2' ></i><%= result[i].writer.username %></p>
                             <p class="card-text">At <%= result[i].location %></p>
                             <p class="card-text description"><strong><%= result[i].description %></strong></p>
                             <p hidden = true><%= result[i].geometry.coordinates %></p>
@@ -100,9 +100,43 @@
         const MapBoxToken = "<%- process.env.MAPBOX_API_TOKEN %>"
     </script>
     <script src="/jsfiles/distanceForPosts.js"></script>
-    <script src="/jsfiles/searchFoodpost.js"></script>
+    <script src="/jsfiles/cardDescriptionLimit.js"></script>
     <link rel="stylesheet" href="/cssfiles/searchFoodpost.css">
+    <script>
+        const clearIcon = document.querySelector(".clear-icon");
+        const searchBar = document.querySelector(".searchBar");
 
+        searchBar.addEventListener("keyup", () => {
+            if(searchBar.value && clearIcon.style.visibility != "visible"){
+            clearIcon.style.visibility = "visible";
+            } else if(!searchBar.value) {
+            clearIcon.style.visibility = "hidden";
+            }
+        });
+
+        clearIcon.addEventListener("click", () => {
+            searchBar.value = "";
+            clearIcon.style.visibility = "hidden";
+        })
+
+
+        const button = document.getElementsByTagName("button")[0];
+        const iTag = document.getElementsByTagName("i")[1]
+        button.addEventListener('mouseenter', function() {
+        // do something when the user hovers over the div
+            iTag.classList.add("bx-lg")
+            iTag.classList.add("bx-flashing")
+        });
+
+
+        button.addEventListener('mouseleave', function() {
+        // do something when the user hovers over the div
+            iTag.classList.remove("bx-lg")
+            iTag.classList.remove("bx-flashing")
+
+        });
+
+    </script>
 
 
 

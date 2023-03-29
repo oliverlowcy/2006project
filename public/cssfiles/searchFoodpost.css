@@ -97,13 +97,13 @@ h4{
 
   }
   
-  ::placeholder {
-    color: #f0b2a8;
-  }
+::placeholder {
+color: #f0b2a8;
+}
 
-  .bx-x:hover{
-    cursor: pointer;
-  }
+.bx-x:hover{
+cursor: pointer;
+}
 
 .card{
     width: 60%;

@@ -3,15 +3,11 @@
     <%- include('./partials/preloader')%>
     <%- include('./partials/flasher')%>
     <%- include('./partials/navbar')%>
-    <style>
-        
-        #map { top: 0; bottom: 0; height: 700px;width:700px;margin-left: 20px;margin-top: 50px;border-style:outset;}
-    </style>
+=
     <div class = "container">
-        <div id = "map" style = "width:100% ; height:500px"></div>
+        <div id = "map"></div>
     </div>
 
-    <h1>This is the home page where all the food post is displayed</h1>
 
 
 
@@ -45,13 +41,32 @@
     <div class = "allposts">
 
         <% for(var i = 0;i<arrOfFoodPost.length;i++){ %>
-            <div class = "post">
-                <a href = "/foodposts/<%= arrOfFoodPost[i]._id %>"><%= arrOfFoodPost[i].name %></a>
-                <p>By <%= arrOfFoodPost[i].writer.username %></p>
-                <p>At <%= arrOfFoodPost[i].location %></p>
-                <p>DESCRIPTION <%= arrOfFoodPost[i].description %></p>
-                <p hidden = true><%= arrOfFoodPost[i].geometry.coordinates %></p>
+            <div class="card sm-3" >
+                <div class="row">
+                    <div class="col-sm-4 align-self-center">
+                    
+                    <% if(arrOfFoodPost[i].images.length){ %>
+                        <img class="img-fluid" alt="Responsive image" src="<%= arrOfFoodPost[i].images[0].url %>">
+                    <%}else{%>
+                        <img class="img-fluid" alt="Responsive image" src="/photos/defaultImage.jpg">
+                    <%}%>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= arrOfFoodPost[i].name%></h5>
+                            <p class="card-text"><i class='bx bx-user mr-2' ></i><%= arrOfFoodPost[i].writer.username %></p>
+                            <p class="card-text"><i class='bx bx-pin mr-2' ></i><%= arrOfFoodPost[i].location %></p>
+                            <p class="card-text description"><strong><%= arrOfFoodPost[i].description %></strong></p>
+                            <p hidden = true><%= arrOfFoodPost[i].geometry.coordinates %></p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <a class="btn btn1" href="/foodposts/<%= arrOfFoodPost[i]._id %>">View More</a>
+
+                
             </div>
+            <br>
             
 
         <% }%>
@@ -64,10 +79,12 @@
     </script>
 
     <script src="/jsfiles/homeClusterMap.js"></script>
+    <script src="/jsfiles/cardDescriptionLimit.js"></script>
+    <link rel="stylesheet" href="/cssfiles/home.css">
 
         
      
-
+    
     
 
 <%- include('./partials/footer')%>

@@ -1,0 +1,10 @@
+1. Carousel with image height fixed
+2. Mapbox Map
+3. Name of post
+4. Author Name
+5. Location
+6. Description
+7. Reviews
+
+
+
