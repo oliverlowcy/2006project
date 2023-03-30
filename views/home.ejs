@@ -10,22 +10,6 @@
 
 
 
-
-    <% if(isUserAuthenticated){ %>
-        <% if(allFriendRequests.length){ %>
-            <%    for(let friendreq of allFriendRequests){ %>
-                    <a href="/profile/<%=friendreq.requester._id %>"><p><%= friendreq.requester.username %></p></a>
-                    <form action="/profile/acceptFriend/<%=friendreq.requester._id %>" method = "POST">
-                        <button type="submit">Accept Friend Request</button>
-                    </form>
-                    <hr>
-            <%    } %>
-        <% }else{ %>
-            <p>No friend requests</p>
-        <%}%>
-
-    
-    <%} %>
     
     <% if (isUserAuthenticated && !toShowFriendPosts) { %>
         <form action="/foodposts" method = "GET">

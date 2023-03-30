@@ -1,13 +1,19 @@
+.mycontainer1{
+    height: 400px;
+}
+
+
 .sidebar{
-    position:absolute;
     background: black;
-    top: 200;
-    left: 0;
-    width: 15%;
-    height:400px;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
+    height: 100%
+    
+}
+
+.row{
+    height: 100%;
 }
 
 .sidebar2{
@@ -35,6 +41,7 @@
 
 .scrollbox{
     overflow: auto;
+    padding-bottom: 20px;
 
 }
 
@@ -54,9 +61,18 @@ a{
     color: black;
 }
 
-.card-body:hover{
+.card-body1:hover{
     background: black;
     color: white;
+}
+
+.card-body1{
+    border-radius: 10px;
+}
+
+.card-body2{
+    border-radius: 10px;
+
 }
 
 .card-body2:hover{
@@ -69,7 +85,63 @@ a:hover{
 }
 
 
-.card{
+.card1{
     width: 80%;
-    margin-left: 20px;
+    margin-left: 32px;
+    border-radius: 10px;
+}
+
+.middleClass{
+    background:white;
+}
+
+
+button[type = "submit"]{
+    position: relative;
+    top: 200px;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 45px;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    transition: .3s ;
+    padding: 10px;
+}
+
+#acceptFriendRequest{
+    background:green;
+}
+
+#acceptFriendRequest:hover{
+    background: black;
+}
+
+#removeFriend{
+    background:red;
+}
+
+#removeFriend:hover{
+    background: black;
+}
+
+.container3{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#addFriend{
+    background:#40E0D0;
+}
+
+#addFriend:hover{
+    background:black;
+}
+
+table{
+    position: absolute;
+    top: 300px;
 }
