@@ -10,10 +10,9 @@
     </div>
 
 
-    <div class = "container mt-4 mycontainer1">
+    <div class = "mt-4 container">
         
-        
-        <div class="row">
+        <div class="row" style = "margin-left: 1px;width: 100%;">
             <div class="col-6">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
                     <ol class="carousel-indicators">
@@ -72,7 +71,7 @@
                         <%  if( currentUser && singleFoodPost.writer.equals(currentUser._id))  {%>
                             <div class="card-body" id = "editDelete">
                                 <div class="input-field">
-                                    <a href="/foodposts/<%=singleFoodPost._id%>/edit" class="btn" id = "mybutton2">Edit foodpost</a>
+                                    <a href="/foodposts/<%=singleFoodPost._id%>/edit" class="btn" id = "mybutton2">Edit Post</a>
                                 </div>
                                 <form class="d-inline" action="/foodposts/<%=singleFoodPost._id%>?_method=DELETE" method="POST">
                                     <div class="input-field">
@@ -89,7 +88,7 @@
         </div>
     </div>
 
-    <div class = "container mt-4">
+    <div class = "container mt-4" style = "display: flex;flex-direction: column;align-items: center;">
         <% if(currentUser){ %>
 
         
@@ -102,7 +101,7 @@
 
             </form>
         <% } %>
-        <div class="card" style="width: 70%; margin-left: 210px;border-radius: 0px;">
+        <div class="card" style="width: 70%;border-radius: 0px;">
 
             <ul class="list-group list-group-flush">
 
