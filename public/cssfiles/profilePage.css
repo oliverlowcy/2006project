@@ -1,0 +1,75 @@
+.sidebar{
+    position:absolute;
+    background: black;
+    top: 200;
+    left: 0;
+    width: 15%;
+    height:400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.sidebar2{
+    position:absolute;
+    top: 200;
+    right: 0;
+    width: 15%;
+    height:400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background: black;
+
+}
+
+
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: white;
+}
+
+.scrollbox{
+    overflow: auto;
+
+}
+
+.scrollbox-inner p{
+    font-size: 16px;
+}
+
+header h2{
+    font-size: 32px;
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.card-body:hover{
+    background: black;
+    color: white;
+}
+
+.card-body2:hover{
+    background: white;
+    color: black;
+}
+
+a:hover{
+    color:black;
+}
+
+
+.card{
+    width: 80%;
+    margin-left: 20px;
+}

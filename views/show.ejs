@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="card">
+                <div class="card postcard">
                     <div class="card-body">
                         <h5 class="card-title"><%= singleFoodPost.name %></h5>
                         <ul class="list-group list-group-flush">
@@ -87,22 +87,114 @@
                 </div>
             </div>
         </div>
-        
-        
     </div>
+
+    <div class = "container mt-4">
+        <% if(currentUser){ %>
+
+        
+            <form action="/foodposts/<%= singleFoodPost._id %>/reviews" class="validated-form mb-0" novalidate method = "POST">
+                <div class="input-wrapper">
+                    <i class='bx bx-x bx-md clear-icon' ></i>
+                    <input class = "searchBar" type="text" placeholder="Write A Review" name = "review[body]" required>
+                    <button type="submit" class = "search-button"><i class='bx bx-paper-plane bx-md'></i></button>
+                </div>
+
+            </form>
+        <% } %>
+        <div class="card" style="width: 70%; margin-left: 210px;border-radius: 0px;">
+
+            <ul class="list-group list-group-flush">
+
+                <% if(!currentUser){ %>
+                    <div class="card-header">
+                        <strong>Reviews</strong>
+                    </div>
+                <% }%>
+                <% if(singleFoodPost.reviews.length){ %>
+                    <% for(let review of singleFoodPost.reviews){ %>
+                        <li class="list-group-item" >
+                            <p class = "cardAuthor"><a href="/profile/<%= review.reviewer._id %>" style = "font-size: 20px;"><%= review.reviewer.username %></a></p>
+                            <p style = "width: 90%;"><%= review.body %></p>
+                            <% if( currentUser && review.reviewer.equals(currentUser._id))  {%> 
+                                <form action="/foodposts/<%=singleFoodPost._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                                    <button class="submit mt-4">Delete Review</button>
+                                </form>
+                            <% } %>
+                        </li>
+                        
+                    <% }%>
+
+                <% } else {%>
+                    <li class="list-group-item">
+                        No Review Found
+                    </li>
+                <% } %>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+    <br>
+    <br>
+            
+        
+
+
+        
+        
+
+
     
     
-    <!-- ======================================================================================================================================== -->
     <script>
         const MapBoxToken = "<%- process.env.MAPBOX_API_TOKEN %>"
         const destination = [<%= singleFoodPost.geometry.coordinates[0] %>,<%= singleFoodPost.geometry.coordinates[1] %>]
     </script>
     <script src="/jsfiles/showMapbox.js"></script>
     <link rel="stylesheet" href="/cssfiles/show.css">
+    <script>
+        const clearIcon = document.querySelector(".clear-icon");
+        const searchBar = document.querySelector(".searchBar");
 
-    <!-- ======================================================================================================================================== -->
+        searchBar.addEventListener("keyup", () => {
+            if(searchBar.value && clearIcon.style.visibility != "visible"){
+            clearIcon.style.visibility = "visible";
+            } else if(!searchBar.value) {
+            clearIcon.style.visibility = "hidden";
+            }
+        });
 
-    
-    
+        clearIcon.addEventListener("click", () => {
+            searchBar.value = "";
+            clearIcon.style.visibility = "hidden";
+        })
 
-<%- include('./partials/footer')%>
+
+        const button = document.getElementsByTagName("button")[0];
+        const iTag = document.getElementsByTagName("i")[3]
+        button.addEventListener('mouseenter', function() {
+        // do something when the user hovers over the div
+            iTag.classList.add("bx-lg")
+            iTag.classList.add("bx-fade-right")
+        });
+
+
+        button.addEventListener('mouseleave', function() {
+        // do something when the user hovers over the div
+            iTag.classList.remove("bx-lg")
+            iTag.classList.remove("bx-fade-right")
+
+        });
+
+    </script>
+
+
+    <%- include('./partials/bsValidation')%>
+
+
+</body>
+</html>
+

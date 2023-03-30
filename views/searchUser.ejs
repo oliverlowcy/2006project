@@ -9,12 +9,12 @@
         <br><br>
         <h1><strong>SEARCH</strong></h1>
         <br>
-        <form action="/foodposts/search" method = "GET" name = "searchBar">
+        <form action="/foodposts/search" method = "GET" name = "searchBar" class="validated-form" novalidate>
             <div class = "row">
                 <div class = "col-10">
                     <div class="input-wrapper">
                         <i class='bx bx-x bx-md clear-icon' ></i>
-                        <input class = "searchBar" type="text" placeholder="Search" name = "search">
+                        <input class = "searchBar" type="text" placeholder="Search" name = "search" required>
                         <button type="submit" class = "search-button"><i class='bx bx-search bx-md'></i></button>
                     </div>
                 </div>
@@ -115,6 +115,7 @@
     </script>
     
     <link rel="stylesheet" href="/cssfiles/searchUser.css">
+    <%- include('./partials/bsValidation')%>
 
 
     

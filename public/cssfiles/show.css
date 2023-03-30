@@ -32,7 +32,7 @@ img{
     padding: 0;
 }
 
-.card{
+.postcard{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-top-left-radius: 0px;
@@ -57,7 +57,7 @@ img{
 
 a{
     text-decoration: none;
-    color:white;
+    color:black;
     font-weight: bold;
 
 }
@@ -108,4 +108,64 @@ a:hover{
 .submit:hover{
     transform: scale(1.1);
     background: black;
+}
+
+
+
+
+.search-button {
+  background-color: #000;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.bx {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+    padding: 0.5rem;
+    border-radius: 0px;    
+    color: white;
+    width: 70%;
+    align-self: center;
+    margin-left: 210px;
+  }
+  
+ .searchBar {
+    margin: 0 0.5rem 0 0.5rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #000;
+    color: white;
+    font-weight: bold;
+    height: 34px;
+
+  }
+  
+::placeholder {
+color: #f0b2a8;
+}
+
+.bx-x:hover{
+cursor: pointer;
+}
+
+.cardAuthor{
+    display: inline;
+    position: absolute;
+    top:10;
+    right: 10;
 }
