@@ -28,17 +28,16 @@ async function validateFoodpost(req, res, next){
     await ggGeocoder.geocode(queryLocation, function (err, data) {
         if((err || !data.length)){
             req.flash("error", "Update unsuccessful, Location Not Found!");
-            res.redirect(redirectLink)
+            return res.redirect(redirectLink)
+        }else{
+            if (errorMsg) {
+                req.flash("error", "Update unsuccessful, Please Try Again");
+                return res.redirect(redirectLink)
+            } else {
+                next();
+            }
         }
     })
-
-
-    if (errorMsg) {
-        req.flash("error", "Update unsuccessful, Please Try Again");
-        res.redirect(redirectLink)
-    } else {
-        next();
-    }
 }
 
 async function validateNewFoodpost(req, res, next){
@@ -48,18 +47,22 @@ async function validateNewFoodpost(req, res, next){
     let queryLocation = req.body.foodpost.location + " Singapore";
     await ggGeocoder.geocode(queryLocation, function (err, data) {
         if((err || !data.length)){
-            req.flash("error", "Location Not Found !");
-            res.redirect("/foodposts/new")
+            req.flash("error", "Post unsuccessful, Location Not Found !");
+            return res.redirect("/foodposts/new")
+        }else{
+            if (errorMsg) {
+                req.flash("error", "Post unsuccessful, Please Try Again");
+                return res.redirect("/foodposts/new")
+            } else {
+                next();
+            }
         }
     })
 
+    
 
-    if (errorMsg) {
-        req.flash("error", "Post unsuccessful, Please Try Again");
-        res.redirect("/foodposts/new")
-    } else {
-        next();
-    }
+
+
 }
 
 function validateReview(req, res, next){
