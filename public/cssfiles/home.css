@@ -98,3 +98,22 @@ a{
 a:hover{
     color:grey;
 }
+
+button[type = "submit"]{
+    background: #40E0D0;
+    border: none;
+    border-radius: 30px;
+    font-size: 25px;
+    height: 60px;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    transition: .3s ;
+    padding: 10px;
+    font-weight: bold;
+    width: 200px;
+}
+
+button[type = "submit"]:hover{
+    background: #52ada4;
+}

@@ -10,16 +10,19 @@
 
 
 
-    
-    <% if (isUserAuthenticated && !toShowFriendPosts) { %>
-        <form action="/foodposts" method = "GET">
-            <button type="submit" name = "onlyFriends" value = "yes">Only Friends</button>
-        </form>
-    <% }else if(isUserAuthenticated && toShowFriendPosts){ %>
-        <form action="/foodposts" method = "GET">
-            <button type="submit">Back to FYP</button>
-        </form>
-    <% } %>
+    <div style = "display: flex;flex-direction: column;align-items: center; margin-top: 40px;">
+        
+        <% if (isUserAuthenticated && !toShowFriendPosts) { %>
+            <form action="/foodposts" method = "GET">
+                <button type="submit" name = "onlyFriends" value = "yes">Only Friends</button>
+            </form>
+        <% }else if(isUserAuthenticated && toShowFriendPosts){ %>
+            <form action="/foodposts" method = "GET">
+                <button type="submit">For You Page</button>
+            </form>
+        <% } %>
+    </div>
+
 
 
     <div class = "allposts" style = "display: flex;flex-direction: column;align-items: center;">
@@ -71,4 +74,5 @@
     
     
 
-<%- include('./partials/footer')%>
+</body>
+</html>
