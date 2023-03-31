@@ -6,11 +6,35 @@ const ExpressError = require("../errorUtility/ExpressError");
 const Foodpost = require("../models/foodpost");
 const Review = require("../models/review");
 
+var NodeGeocoder = require('node-geocoder');
+ 
+var options = {
+  provider: 'google',
+  httpAdapter: 'https',
+  apiKey: process.env.GEOCODER_API_KEY,
+  formatter: null
+};
+ 
+var ggGeocoder = NodeGeocoder(options);
 
-function validateFoodpost(req, res, next){
+
+async function validateFoodpost(req, res, next){
     const errorMsg = foodPostSchema.validate(req.body).error;
+    console.log(req.body)
+    
+
+    let queryLocation = req.body.foodpost.location + " Singapore";
+    await ggGeocoder.geocode(queryLocation, function (err, data) {
+        if((err || !data.length)){
+            req.flash("error", "Location Not Found !");
+            res.redirect("/foodposts/new")
+        }
+    })
+
+
     if (errorMsg) {
-        throw new ExpressError("Error with foodpost validation", 400)
+        req.flash("error", "Post unsuccessful, Please Try Again");
+        res.redirect("/foodposts/new")
     } else {
         next();
     }

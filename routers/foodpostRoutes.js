@@ -150,9 +150,8 @@ expressrouter.put("/:id",userAuthenticated,isPostWriter, upload.array('image'), 
     let queryLocation = req.body.foodpost.location + " Singapore";
     await ggGeocoder.geocode(queryLocation, function (err, data) {
         
-        //ERROR HANDLING INSERT HERE
 
-        
+      
         let lat = 1.3342641;
         let long = 103.8490489;
 
