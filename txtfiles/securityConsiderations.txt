@@ -1,2 +1,26 @@
 1. process.env helps to keep API secure
 2. We have JOI schema to prevent http request from third party apps like Postman
+
+==============================================================================
+
+    let queryLocation = req.body.foodpost.location + " Singapore";
+    await ggGeocoder.geocode(queryLocation, function (err, data) {
+        if((err || !data.length)){
+            req.flash("error", "Post unsuccessful, Location Not Found !");
+            return res.redirect("/foodposts/new")
+        }
+    })
+
+    if (errorMsg) {
+        req.flash("error", "Post unsuccessful, Please Try Again");
+        return res.redirect("/foodposts/new")
+    } else {
+        next();
+    }
+
+    Theres an issue https://stackoverflow.com/questions/52122272/err-http-headers-sent-cannot-set-headers-after-they-are-sent-to-the-client
+
+    Only found when I tested 2 invalid inputs
+
+
+==============================================================================
