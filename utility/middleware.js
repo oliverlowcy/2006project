@@ -20,7 +20,29 @@ var ggGeocoder = NodeGeocoder(options);
 
 async function validateFoodpost(req, res, next){
     const errorMsg = foodPostSchema.validate(req.body).error;
-    console.log(req.body)
+    const url = req.originalUrl;
+    const id = (url.split("/")[2]).split("?")[0];
+    let redirectLink = "/foodposts/" + id + "/edit";   
+
+    let queryLocation = req.body.foodpost.location + " Singapore";
+    await ggGeocoder.geocode(queryLocation, function (err, data) {
+        if((err || !data.length)){
+            req.flash("error", "Update unsuccessful, Location Not Found!");
+            res.redirect(redirectLink)
+        }
+    })
+
+
+    if (errorMsg) {
+        req.flash("error", "Update unsuccessful, Please Try Again");
+        res.redirect(redirectLink)
+    } else {
+        next();
+    }
+}
+
+async function validateNewFoodpost(req, res, next){
+    const errorMsg = foodPostSchema.validate(req.body).error;
     
 
     let queryLocation = req.body.foodpost.location + " Singapore";
@@ -93,5 +115,5 @@ async function isPostReviewer(req, res, next){
     
 }
 
-module.exports = {validateFoodpost,validateReview,userAuthenticated,isPostWriter,isPostReviewer}
+module.exports = {validateFoodpost,validateReview,userAuthenticated,isPostWriter,isPostReviewer,validateNewFoodpost}
 

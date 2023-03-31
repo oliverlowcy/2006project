@@ -16,6 +16,7 @@ var ggGeocoder = NodeGeocoder(options);
 const userAuthenticated = require("../utility/middleware").userAuthenticated;
 const isPostWriter = require("../utility/middleware").isPostWriter;
 const validateFoodpost = require("../utility/middleware").validateFoodpost;
+const validateNewFoodpost = require("../utility/middleware").validateNewFoodpost;
 const Foodpost = require("../models/foodpost");
 const Friendship = require("../models/friendship");
 const User = require("../models/user");
@@ -28,9 +29,6 @@ const upload = multer({storage})
 expressrouter.get("/new", userAuthenticated, (req,res) => {
     res.render("newfoodpost")
 })
-
-
-
 
 
 expressrouter.get("/:id/edit", userAuthenticated,isPostWriter, catchAsyncWrapper(async(req,res) => {
@@ -113,7 +111,6 @@ expressrouter.get("/search" , catchAsyncWrapper(async(req,res) => {
 }))
 
 
-
 expressrouter.get("/:id", catchAsyncWrapper(async(req,res) => {
     const idToShow = req.params.id;
     const singleFoodPost = await Foodpost.findById(idToShow).populate({path: "reviews",populate: {path: "reviewer"}}).populate("writer");
@@ -188,7 +185,7 @@ expressrouter.delete("/:id",userAuthenticated,isPostWriter,catchAsyncWrapper(asy
 
 }))
 
-expressrouter.post("/",userAuthenticated,upload.array('image'), validateFoodpost, catchAsyncWrapper(async(req,res) => {
+expressrouter.post("/",userAuthenticated,upload.array('image'), validateNewFoodpost, catchAsyncWrapper(async(req,res) => {
 
     var listOfImageObjectToAdd = []
     var imageObjToAdd = {}
