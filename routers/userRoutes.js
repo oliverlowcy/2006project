@@ -39,7 +39,6 @@ expressrouter.get("/login", (req, res) => {
 })
 
 expressrouter.post("/login", passport.authenticate("local", { failureFlash: true ,keepSessionInfo: true,failureRedirect: "/profile/login" }), (req, res) => {
-    console.log(req.session);
     var redirectUrl = "";
     if(req.session.returnTo){
         redirectUrl = req.session.returnTo;

@@ -64,6 +64,8 @@
                         <ul class="list-group list-group-flush">
                         <li class="list-group-item"><i class='bx bx-user mr-2' ></i><a href="/profile/<%= singleFoodPost.writer._id %>"><%= singleFoodPost.writer.username %></a></li>
                         <li class="list-group-item"><i class='bx bx-pin mr-2' ></i><%= singleFoodPost.location %></li>
+                        <li class="list-group-item"><i class='bx bx-money mr-2' ></i>$<%= singleFoodPost.price %></li>
+                        <li class="list-group-item"><i class='bx bx-star mr-2' ></i><%= singleFoodPost.rating %></li>
                         </ul>
                         <br>
                         <p class="card-text ml-3"><%= singleFoodPost.description %></p>

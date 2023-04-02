@@ -76,7 +76,7 @@ foodpostSchema.virtual('properties.popupText').get(function(){
     <h3>${this.name}</h3>
     <p>${this.location}</p>
     ${priceIndicator}
-    <p><a href="/foodposts/${this._id}">See More</a></p>
+    <p><a href="/foodposts/${this._id}" style ="color:grey;">See More...</a></p>
     
     
     `

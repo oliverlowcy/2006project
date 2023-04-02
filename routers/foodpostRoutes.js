@@ -30,7 +30,6 @@ expressrouter.get("/new", userAuthenticated, (req,res) => {
     res.render("newfoodpost")
 })
 
-
 expressrouter.get("/:id/edit", userAuthenticated,isPostWriter, catchAsyncWrapper(async(req,res) => {
     const idToShow = req.params.id;
     const singleFoodPost = await Foodpost.findById(idToShow);
@@ -40,7 +39,6 @@ expressrouter.get("/:id/edit", userAuthenticated,isPostWriter, catchAsyncWrapper
         return res.redirect("/foodposts");
     }
 }))
-
 
 expressrouter.get("/", catchAsyncWrapper(async(req,res) => {
 
@@ -110,13 +108,11 @@ expressrouter.get("/search" , catchAsyncWrapper(async(req,res) => {
     
 }))
 
-
 expressrouter.get("/:id", catchAsyncWrapper(async(req,res) => {
     const idToShow = req.params.id;
     const singleFoodPost = await Foodpost.findById(idToShow).populate({path: "reviews",populate: {path: "reviewer"}}).populate("writer");
     res.render("show",{singleFoodPost:singleFoodPost})
 }))
-
 
 expressrouter.put("/:id",userAuthenticated,isPostWriter, upload.array('image'), validateFoodpost, catchAsyncWrapper(async(req,res) => {
     
@@ -175,8 +171,6 @@ expressrouter.put("/:id",userAuthenticated,isPostWriter, upload.array('image'), 
 
 }))
 
-
-
 expressrouter.delete("/:id",userAuthenticated,isPostWriter,catchAsyncWrapper(async(req,res) => {
     const idToEdit = req.params.id;
     await Foodpost.findByIdAndDelete(idToEdit)
@@ -233,7 +227,6 @@ expressrouter.post("/",userAuthenticated,upload.array('image'), validateNewFoodp
     await newFoodPost.save();   
     res.redirect("/foodposts")
 }))
-
 
 function escapeRegex(text){
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
