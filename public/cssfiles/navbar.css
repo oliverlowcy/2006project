@@ -21,7 +21,7 @@ nav{
 }
 
 .logo:hover{
-    color:grey;
+    color:#40E0D0;
     text-decoration: none;
     font-weight: bold;
     
@@ -42,7 +42,7 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-    color:grey;
+    color:#40E0D0;
     transition: .3s;
     font-size: 17px;
 }

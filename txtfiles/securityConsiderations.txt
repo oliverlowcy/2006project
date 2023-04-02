@@ -7,13 +7,13 @@
     await ggGeocoder.geocode(queryLocation, function (err, data) {
         if((err || !data.length)){
             req.flash("error", "Post unsuccessful, Location Not Found !");
-            return res.redirect("/foodposts/new")
+            res.redirect("/foodposts/new")
         }
     })
 
     if (errorMsg) {
         req.flash("error", "Post unsuccessful, Please Try Again");
-        return res.redirect("/foodposts/new")
+        res.redirect("/foodposts/new")
     } else {
         next();
     }
