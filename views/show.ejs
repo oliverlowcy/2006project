@@ -97,7 +97,7 @@
             <form action="/foodposts/<%= singleFoodPost._id %>/reviews" class="validated-form mb-0" novalidate method = "POST">
                 <div class="input-wrapper">
                     <i class='bx bx-x bx-md clear-icon' ></i>
-                    <input class = "searchBar" type="text" placeholder="Write A Review" name = "review[body]" required>
+                    <input class = "searchBar" type="text" placeholder="Write A Review" name = "review[body]" maxlength = "300" required>
                     <button type="submit" class = "search-button"><i class='bx bx-paper-plane bx-md'></i></button>
                 </div>
 
