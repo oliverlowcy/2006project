@@ -144,7 +144,7 @@
           </div>
 
           <div class="input-field">
-              <input type="text" class="input2" name = "foodpost[name]" placeholder="Name" value = "<%= singleFoodPost.name%>" maxlength="50" required>
+              <input type="text" class="input2" name = "foodpost[name]" placeholder="Name" value = "<%= singleFoodPost.name%>" maxlength="50" minlength = "3" required>
               <i class='bx bx-user' ></i>
           </div>
 
@@ -154,12 +154,12 @@
           </div>
 
           <div class="input-field">
-            <input type="text" class="input2" name = "foodpost[location]" placeholder="Location" value = "<%= singleFoodPost.location%>" maxlength="50" required>
+            <input type="text" class="input2" name = "foodpost[location]" placeholder="Location" value = "<%= singleFoodPost.location%>" maxlength="50" minlength = "3" required>
             <i class='bx bx-pin ' ></i>
           </div>
 
           <div class="input-field">
-            <textarea class = "input3" cols="50" rows="10" name = "foodpost[description]"  placeholder="Description" maxlength="300" required><%= singleFoodPost.description%></textarea>
+            <textarea class = "input3" cols="50" rows="10" name = "foodpost[description]"  placeholder="Description" maxlength="300" minlength = "3" required><%= singleFoodPost.description%></textarea>
             <i class='bx bx-text' id = "descriptionItag"></i>
           </div>
 
