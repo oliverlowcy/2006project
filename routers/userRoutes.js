@@ -83,7 +83,6 @@ expressrouter.post("/acceptFriend/:id", userAuthenticated, async(req, res) => {
     const redirectLink = "/profile/" + userIdTofind;
     res.redirect(redirectLink)
 
-    console.log(userIdTofind);
 })
 
 
