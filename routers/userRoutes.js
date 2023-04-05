@@ -101,7 +101,6 @@ expressrouter.post("/addFriend/:id", userAuthenticated, async(req, res) => {
     const myfriendship = new Friendship(newFriendship);
     await myfriendship.save();  
 
-    console.log(req.params.id)
     const redirectLink = "/profile/" + userIdToFind;
     res.redirect(redirectLink)
     

@@ -9,7 +9,7 @@ function successLocation(position){
     if (currentHour >= 19 || currentHour < 7) {
         lightOrDark = "dark";
     } else {
-        lightOrDark = "light";
+        lightOrDark = "dark";
     }
     setupMap([position.coords.longitude, position.coords.latitude],lightOrDark)
 

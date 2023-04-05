@@ -21,7 +21,7 @@ function initialiseMap(centreLong,centreLat){
     if (currentHour >= 19 || currentHour < 7) {
         lightOrDark = "dark";
     } else {
-        lightOrDark = "light";
+        lightOrDark = "dark";
     }
 
     let mapStyle = "mapbox://styles/mapbox/dark-v11";
